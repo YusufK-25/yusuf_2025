@@ -37,7 +37,7 @@ permalink: /about/
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
         {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"},
-        {"flag": "3/32/Flag_of_Pakistan.svg, "greeting": "Salaam", "description": "Pakistan - occasional visit"},
+        {"flag": "3/32/Flag_of_Pakistan.svg", "greeting": "Salaam", "description": "Pakistan - occasional visit"},
     ]; 
     
     // 3a. Consider how to update style count for size of container
