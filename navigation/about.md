@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Yusuf Khan's About Me Page
+title: About Me
 permalink: /about/
 ---
 <style>
