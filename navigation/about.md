@@ -3,7 +3,11 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-Hi! I’m Yusuf Khan, a sophomore enrolled in DNHS. I was born in San Diego, but my heritage is from Pakistan. You’ll find me reading, playing games, ~~or crying in the corner~~ when I'm not working or studying. *I love staying active and inspired.* I have no experience in coding, but that's why I'm here.
+## Who I am
+Hi! I’m Yusuf Khan, part of the class of 2027 enrolled in DNHS. I was born in San Diego, but my heritage is from Pakistan. You’ll find me reading, playing games, ~~or crying in the corner~~ when I'm not working or studying. *I love staying active and inspired.* I have no experience in coding, but that's why I'm here.
+
+## What schools I came from
+I went to elementary school in Monterey Ridge, where I stayed until I graduated. I then went to OVMS for middle school, where I took a coding class, but I was locked out of the account, and no longer remember anything.
 <style>
     /* Style looks pretty compact, trace grid-container and grid-item in the code */
     .grid-container {
