@@ -5,7 +5,6 @@ description: Home Page
 image: /images/mario_animation.png
 hide: true
 ---
-
 <!-- Liquid:  statements -->
 
 <!-- Include submenu from _includes to top of pages -->
