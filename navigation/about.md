@@ -8,6 +8,10 @@ Hi! I’m Yusuf Khan, part of the class of 2027 enrolled in DNHS. I was born in 
 
 ## What schools I came from
 I went to elementary school in Monterey Ridge, where I stayed until I graduated. I then went to OVMS for middle school, where I took a coding class, but I was locked out of the account, and no longer remember anything.
+
+<!-- Add Google Fonts link for fancier text styles -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@700&display=swap">
+
 <style>
     /* Style the grid container and items */
     .grid-container {
@@ -23,16 +27,22 @@ I went to elementary school in Monterey Ridge, where I stayed until I graduated.
         background-color: lightblue; /* Light blue bubble background */
         border-radius: 15px; /* Create rounded corners for bubble effect */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
+        font-family: 'Poppins', sans-serif; /* Fancy font for the general text */
     }
     .grid-item img {
-        width: 120%; /* Slightly larger flags */
-        height: 150px; /* Increase height for larger size */
+        width: 140%; /* Larger flags */
+        height: 180px; /* Increase height for larger size */
         object-fit: contain; /* Ensure the image fits within the fixed height */
         display: block; /* Make sure image is block-level for proper centering */
         margin: 0 auto; /* Center the image horizontally */
     }
     .grid-item p {
         margin: 5px 0; /* Add some margin for spacing */
+    }
+    .grid-item p:first-of-type {
+        font-family: 'Dancing Script', cursive; /* Fancy cursive font for greetings */
+        font-size: 24px; /* Larger font size for greetings */
+        color: #2a4d69; /* Custom color for the text */
     }
 </style>
 
@@ -62,13 +72,13 @@ I went to elementary school in Monterey Ridge, where I stayed until I graduated.
         img.src = http_source + location.flag; // concatenate the source and flag
         img.alt = location.flag + " Flag"; // add alt text for accessibility
 
-        // Add "p" HTML tag for the description
-        var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
-
         // Add "p" HTML tag for the greeting
         var greeting = document.createElement("p");
         greeting.textContent = location.greeting;  // extract the greeting
+
+        // Add "p" HTML tag for the description
+        var description = document.createElement("p");
+        description.textContent = location.description; // extract the description
 
         // Append img and p HTML tags to the grid item DIV
         gridItem.appendChild(img);
