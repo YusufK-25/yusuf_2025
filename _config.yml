@@ -9,8 +9,10 @@ future: true
 minima:
   skin: dark 
 remote_theme: pages-themes/cayman@v0.2.0
+# merlot theme not working: Ask Xavier to use premium chatGPT to check code
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
+# remote_theme: pages-themes/time-machine@v0.2.0
 # remote_theme: pages-themes/merlot@v0.2.0
 plugins:
   - jekyll-remote-theme
