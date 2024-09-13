@@ -9,19 +9,27 @@ Hi! I’m Yusuf Khan, part of the class of 2027 enrolled in DNHS. I was born in 
 ## What schools I came from
 I went to elementary school in Monterey Ridge, where I stayed until I graduated. I then went to OVMS for middle school, where I took a coding class, but I was locked out of the account, and no longer remember anything.
 <style>
-    /* Style looks pretty compact, trace grid-container and grid-item in the code */
+    /* Style the grid container and items */
     .grid-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic columns */
         gap: 10px;
+        padding: 20px; /* Add some padding around the grid */
+        justify-content: center; /* Center the grid items horizontally */
     }
     .grid-item {
         text-align: center;
+        padding: 20px;
+        background-color: lightblue; /* Light blue bubble background */
+        border-radius: 15px; /* Create rounded corners for bubble effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
     }
     .grid-item img {
-        width: 100%;
-        height: 100px; /* Fixed height for uniformity */
+        width: 120%; /* Slightly larger flags */
+        height: 150px; /* Increase height for larger size */
         object-fit: contain; /* Ensure the image fits within the fixed height */
+        display: block; /* Make sure image is block-level for proper centering */
+        margin: 0 auto; /* Center the image horizontally */
     }
     .grid-item p {
         margin: 5px 0; /* Add some margin for spacing */
@@ -44,10 +52,7 @@ I went to elementary school in Monterey Ridge, where I stayed until I graduated.
         {"flag": "3/32/Flag_of_Pakistan.svg", "greeting": "Salaam", "description": "Pakistan - I occasionally visit"},
     ]; 
     
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
-
-    // 3b. Build grid items inside of our container for each row of data
+    // 3a. Build grid items inside of our container for each row of data
     for (const location of living_in_the_world) {
         // Create a "div" with "class grid-item" for each row
         var gridItem = document.createElement("div");
