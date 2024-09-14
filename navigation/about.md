@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-description: I'm Yusuf
+title: About Me
+description: Hi! I'm Yusuf
 permalink: /about/
 ---
 <!-- Add Google Fonts link for fancier text styles -->
@@ -27,14 +27,15 @@ permalink: /about/
 
     /* Style the grid container and items */
     .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic columns */
+        display: flex;
+        flex-wrap: wrap; /* Allow the items to wrap */
         gap: 10px;
-        padding: 20px; /* Add padding around the grid */
+        padding: 20px;
         justify-content: center; /* Center the grid items horizontally */
         margin: 0 auto; /* Center the entire grid on the page */
         max-width: 800px; /* Limit the width of the grid container */
     }
+
     .grid-item {
         text-align: center;
         padding: 20px;
@@ -42,17 +43,21 @@ permalink: /about/
         border-radius: 15px; /* Create rounded corners for bubble effect */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
         font-family: 'Poppins', sans-serif; /* Fancy font for the general text */
+        width: 200px; /* Set a fixed width for the bubble */
     }
+
     .grid-item img {
         width: 140%; /* Larger flags */
         height: 180px; /* Increase height for larger size */
         object-fit: contain; /* Ensure the image fits within the fixed height */
-        display: block; /* Make sure image is block-level for proper centering */
-        margin: 0 auto; /* Center the image horizontally */
+        display: block;
+        margin: 0 auto;
     }
+
     .grid-item p {
         margin: 5px 0; /* Add some margin for spacing */
     }
+
     .grid-item p:first-of-type {
         font-family: 'Dancing Script', cursive; /* Fancy cursive font for greetings */
         font-size: 24px; /* Larger font size for greetings */
@@ -69,8 +74,7 @@ permalink: /about/
     }
 </style>
 
-<!-- Titles of the sections -->
-<h1>About Me</h1>
+<!-- Titles of the sections (Remove the duplicate <h1> About Me) -->
 
 <h2>Who I am</h2>
 <p>Hi! I’m Yusuf Khan, part of the class of 2027 enrolled in DNHS. I was born in San Diego, but my heritage is from Pakistan. You’ll find me reading, playing games, ~~or crying in the corner~~ when I'm not working or studying. <em>I love staying active and inspired.</em> I have no experience in coding, but that's why I'm here.</p>
