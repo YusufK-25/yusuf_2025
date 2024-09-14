@@ -9,6 +9,7 @@ permalink: /about/
 
 <style>
     /* Style the page titles */
+    /* h1 = largest, h3 = smallest
     h1, h2, h3 {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
