@@ -1,6 +1,5 @@
 {% include nav/home.html %}
 
-
 <style>
     body {
         margin: 0;
@@ -51,12 +50,12 @@
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
             <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
-            <a id="new_game" class="link-alert">new game</a>
+            <a id="new_game" class="link-alert">New Game</a>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
             <p>Game Over! Press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
-            <a id="new_game1" class="link-alert">new game</a>
+            <a id="new_game1" class="link-alert">New Game</a>
         </div>
         <!-- Play Screen -->
         <canvas id="snake" class="wrap" width="320" height="320" tabindex="1"></canvas>
@@ -181,9 +180,11 @@
             gameOver = false;
 
             addFood();
-            canvas.onkeydown = function(evt) {
+
+            // Use window.addEventListener for keydown to ensure it works even without canvas focus
+            window.addEventListener("keydown", function(evt) {
                 changeDir(evt.keyCode);
-            };
+            });
 
             showScreen(SCREEN_SNAKE);
             mainLoop();  // Start the game loop
