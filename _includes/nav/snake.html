@@ -13,7 +13,7 @@
     }
 
     canvas {
-        display: none;
+        display: none; /* Initially hidden */
         border-style: solid;
         border-width: 10px;
         border-color: #FFFFFF;
@@ -87,7 +87,7 @@
 
         // Game Control
         const SCREEN_SNAKE = 0, SCREEN_GAME_OVER = 1;
-        
+
         function showScreen(screen) {
             if (screen === SCREEN_SNAKE) {
                 canvas.style.display = "block";
@@ -112,6 +112,8 @@
                     newGame();
                 }
             });
+
+            showScreen(SCREEN_SNAKE);  // Ensure the menu is shown at the start
         }
 
         function mainLoop() {
