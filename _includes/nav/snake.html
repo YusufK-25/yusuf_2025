@@ -281,21 +281,25 @@
         /* Key Inputs and Actions */
         /////////////////////////////////////////////////////////////
         let changeDir = function(key){
-            switch(key) {
-                case 37:
-                    if (snake_dir !== 1) snake_next_dir = 3;
-                    break;
-                case 38:
-                    if (snake_dir !== 2) snake_next_dir = 0;
-                    break;
-                case 39:
-                    if (snake_dir !== 3) snake_next_dir = 1;
-                    break;
-                case 40:
-                    if (snake_dir !== 0) snake_next_dir = 2;
-                    break;
-            }
-        }
+    switch(key) {
+        case 65:  // A key for left
+            if (snake_dir !== 1)    // if not moving right
+                snake_next_dir = 3;  // move left
+            break;
+        case 87:  // W key for up
+            if (snake_dir !== 2)    // if not moving down
+                snake_next_dir = 0;  // move up
+            break;
+        case 68:  // D key for right
+            if (snake_dir !== 3)    // if not moving left
+                snake_next_dir = 1;  // move right
+            break;
+        case 83:  // S key for down
+            if (snake_dir !== 0)    // if not moving up
+                snake_next_dir = 2;  // move down
+            break;
+    }
+}
 
         /* Random food placement */
         /////////////////////////////////////////////////////////////
