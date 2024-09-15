@@ -108,6 +108,7 @@
                 screen_menu.style.display = "none";
                 screen_game_over.style.display = "none";
                 screen_setting.style.display = "none";
+                console.log("Switched to Snake Screen");
                 break;
             case SCREEN_GAME_OVER:
                 canvas.style.display = "none";
@@ -115,18 +116,21 @@
                 screen_game_over.style.display = "block";
                 screen_setting.style.display = "none";
                 document.getElementById("final_score").innerText = score;
+                console.log("Switched to Game Over Screen");
                 break;
             case SCREEN_MENU:
                 canvas.style.display = "none";
                 screen_menu.style.display = "block";
                 screen_game_over.style.display = "none";
                 screen_setting.style.display = "none";
+                console.log("Switched to Menu Screen");
                 break;
             case SCREEN_SETTING:
                 canvas.style.display = "none";
                 screen_menu.style.display = "none";
                 screen_game_over.style.display = "none";
                 screen_setting.style.display = "block";
+                console.log("Switched to Setting Screen");
                 break;
         }
     }
@@ -146,6 +150,8 @@
 
         setupSettingsMenu();
         showScreen(SCREEN_MENU);
+
+        console.log("Event listeners are set.");
     }
 
     function setupSettingsMenu() {
@@ -170,6 +176,7 @@
     }
 
     function newGame() {
+        console.log("New Game Started");
         score = 0;
         ele_score.innerText = score;
         snake = [{x: 0, y: 15}];
