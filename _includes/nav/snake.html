@@ -94,10 +94,9 @@
         let snake, snake_dir, snake_next_dir, snake_speed, food, score, wall, gameOver;
         let wallEnabled = true;
         let gameStarted = false;
+        let paused = false;  // New flag for pause state
         
-        // Define BLOCK size for the game grid
         const BLOCK = 16;
-    
         const screen_menu = document.getElementById("menu");
         const screen_game_over = document.getElementById("gameover");
         const screen_setting = document.getElementById("setting");
@@ -111,7 +110,6 @@
                     screen_menu.style.display = "none";
                     screen_game_over.style.display = "none";
                     screen_setting.style.display = "none";
-                    console.log("Switched to Snake Screen");
                     break;
                 case SCREEN_GAME_OVER:
                     canvas.style.display = "none";
@@ -119,21 +117,18 @@
                     screen_game_over.style.display = "block";
                     screen_setting.style.display = "none";
                     document.getElementById("final_score").innerText = score;
-                    console.log("Switched to Game Over Screen");
                     break;
                 case SCREEN_MENU:
                     canvas.style.display = "none";
                     screen_menu.style.display = "block";
                     screen_game_over.style.display = "none";
                     screen_setting.style.display = "none";
-                    console.log("Switched to Menu Screen");
                     break;
                 case SCREEN_SETTING:
                     canvas.style.display = "none";
                     screen_menu.style.display = "none";
                     screen_game_over.style.display = "none";
                     screen_setting.style.display = "block";
-                    console.log("Switched to Setting Screen");
                     break;
             }
         }
@@ -153,8 +148,6 @@
     
             setupSettingsMenu();
             showScreen(SCREEN_MENU);
-    
-            console.log("Event listeners are set.");
         }
     
         function setupSettingsMenu() {
@@ -179,7 +172,6 @@
         }
     
         function newGame() {
-            console.log("New Game Started");
             score = 0;
             ele_score.innerText = score;
             snake = [{x: 0, y: 15}];
@@ -188,6 +180,7 @@
             snake_speed = 100;
             gameOver = false;
             gameStarted = true;
+            paused = false; // Reset pause state
     
             addFood();
             window.removeEventListener("keydown", handleKeydown);
@@ -198,11 +191,26 @@
         }
     
         function handleKeydown(evt) {
-            changeDir(evt.code);
+            if (evt.code === "Space") {
+                togglePause();  // Toggle pause with the spacebar
+            } else {
+                changeDir(evt.code);
+            }
+        }
+    
+        function togglePause() {
+            paused = !paused;
+            if (!paused) {
+                mainLoop(); // Resume game loop
+            } else {
+                ctx.fillStyle = "white";
+                ctx.font = "20px Arial";
+                ctx.fillText("Paused", canvas.width / 2 - 30, canvas.height / 2);
+            }
         }
     
         function mainLoop() {
-            if (gameOver) return;
+            if (gameOver || paused) return;
     
             let _x = snake[0].x;
             let _y = snake[0].y;
@@ -239,7 +247,7 @@
                 snake.push({x: snake[0].x, y: snake[0].y});
                 score++;
                 ele_score.innerText = score;
-                snake_speed = Math.max(30, snake_speed - 2); // Increase speed
+                snake_speed = Math.max(30, snake_speed - 1); // Decrease snake speed to increase its speed
                 addFood();
             }
     
