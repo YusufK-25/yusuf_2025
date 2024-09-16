@@ -17,6 +17,7 @@
         border: 2px solid #fff;
         border-radius: 8px;
         margin-top: 20px;
+        background-color: blue; /* Set canvas background to blue */
     }
 
     button {
@@ -163,7 +164,7 @@
     
             toggleWall.onclick = () => {
                 wallEnabled = !wallEnabled;
-                wallStatus.innerText = wallEnabled ? "Off" : "On";
+                wallStatus.innerText = wallEnabled ? "On" : "Off";
             };
         }
     
@@ -300,4 +301,4 @@
             return (x === _x && y === _y);
         }
     })();
-    </script>    
+</script>
