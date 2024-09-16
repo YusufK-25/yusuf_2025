@@ -61,6 +61,7 @@
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-light">
         <p class="fs-4">Snake score: <span id="score_value">0</span></p>
+        <p class="fs-4">Highest score: <span id="highest_score_value">0</span></p> <!-- Display highest score -->
     </header>
     <div id="menu">
         <p>Welcome to Snake!</p>
@@ -70,6 +71,7 @@
     <div id="gameover">
         <p>Game Over!</p>
         <p>Final Score: <span id="final_score">0</span></p>
+        <p>Highest Score: <span id="final_highest_score">0</span></p> <!-- Show highest score at Game Over -->
         <button id="play_again">Play Again</button>
         <button id="return_home">Return to Home</button>
     </div>
@@ -89,21 +91,25 @@
     (function(){
         const canvas = document.getElementById("snake");
         const ctx = canvas.getContext("2d");
-    
+
         const ele_score = document.getElementById("score_value");
-    
+        const ele_highest_score = document.getElementById("highest_score_value"); // Element to display highest score
+
+        let highestScore = localStorage.getItem('highestScore') || 0; // Retrieve the highest score from localStorage
+        ele_highest_score.innerText = highestScore;
+
         let snake, snake_dir, snake_next_dir, snake_speed, food, score, wall, gameOver;
         let wallEnabled = true;
         let gameStarted = false;
-        let paused = false;  // New flag for pause state
-        
+        let paused = false;
+
         const BLOCK = 16;
         const screen_menu = document.getElementById("menu");
         const screen_game_over = document.getElementById("gameover");
         const screen_setting = document.getElementById("setting");
-    
+
         const SCREEN_SNAKE = 0, SCREEN_GAME_OVER = 1, SCREEN_MENU = 2, SCREEN_SETTING = 3;
-    
+
         function showScreen(screen) {
             switch (screen) {
                 case SCREEN_SNAKE:
@@ -118,6 +124,7 @@
                     screen_game_over.style.display = "block";
                     screen_setting.style.display = "none";
                     document.getElementById("final_score").innerText = score;
+                    document.getElementById("final_highest_score").innerText = highestScore; // Update game over screen with highest score
                     break;
                 case SCREEN_MENU:
                     canvas.style.display = "none";
@@ -133,45 +140,45 @@
                     break;
             }
         }
-    
+
         window.onload = function() {
             const button_new_game = document.getElementById("new_game");
             const button_play_again = document.getElementById("play_again");
             const button_return_home = document.getElementById("return_home");
             const button_settings = document.getElementById("settings_button");
             const button_back = document.getElementById("back");
-    
+
             button_new_game.onclick = newGame;
             button_play_again.onclick = newGame;
             button_return_home.onclick = () => showScreen(SCREEN_MENU);
             button_settings.onclick = () => showScreen(SCREEN_SETTING);
             button_back.onclick = () => showScreen(SCREEN_MENU);
-    
+
             setupSettingsMenu();
             showScreen(SCREEN_MENU);
         }
-    
+
         function setupSettingsMenu() {
             const slow = document.getElementById("slow");
             const medium = document.getElementById("medium");
             const fast = document.getElementById("fast");
             const toggleWall = document.getElementById("toggle_wall");
             const wallStatus = document.getElementById("wall_status");
-    
+
             slow.onclick = () => setSnakeSpeed(150);
             medium.onclick = () => setSnakeSpeed(100);
             fast.onclick = () => setSnakeSpeed(50);
-    
+
             toggleWall.onclick = () => {
                 wallEnabled = !wallEnabled;
                 wallStatus.innerText = wallEnabled ? "On" : "Off";
             };
         }
-    
+
         function setSnakeSpeed(speed) {
             snake_speed = speed;
         }
-    
+
         function newGame() {
             score = 0;
             ele_score.innerText = score;
@@ -181,96 +188,102 @@
             snake_speed = 100;
             gameOver = false;
             gameStarted = true;
-            paused = false; // Reset pause state
-    
+            paused = false;
+
             addFood();
             window.removeEventListener("keydown", handleKeydown);
             window.addEventListener("keydown", handleKeydown);
-    
+
             showScreen(SCREEN_SNAKE);
             mainLoop();
         }
-    
+
         function handleKeydown(evt) {
             if (evt.code === "Space") {
-                togglePause();  // Toggle pause with the spacebar
+                togglePause();
             } else {
                 changeDir(evt.code);
             }
         }
-    
+
         function togglePause() {
             paused = !paused;
             if (!paused) {
-                mainLoop(); // Resume game loop
+                mainLoop();
             } else {
                 ctx.fillStyle = "white";
                 ctx.font = "20px Arial";
                 ctx.fillText("Paused", canvas.width / 2 - 30, canvas.height / 2);
             }
         }
-    
+
         function mainLoop() {
             if (gameOver || paused) return;
-    
+
             let _x = snake[0].x;
             let _y = snake[0].y;
             snake_dir = snake_next_dir;
-    
+
             switch(snake_dir){
                 case 0: _y--; break;
                 case 1: _x++; break;
                 case 2: _y++; break;
                 case 3: _x--; break;
             }
-    
+
             if (!wallEnabled) {
                 _x = (_x + canvas.width / BLOCK) % (canvas.width / BLOCK);
                 _y = (_y + canvas.height / BLOCK) % (canvas.height / BLOCK);
             }
-    
+
             snake.pop();
             snake.unshift({x: _x, y: _y});
-    
+
             if (wallEnabled && (snake[0].x < 0 || snake[0].x >= canvas.width / BLOCK || snake[0].y < 0 || snake[0].y >= canvas.height / BLOCK)) {
                 endGame();
                 return;
             }
-    
+
             for (let i = 1; i < snake.length; i++) {
                 if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
                     endGame();
                     return;
                 }
             }
-    
+
             if (checkBlock(snake[0].x, snake[0].y, food.x, food.y)) {
                 snake.push({x: snake[0].x, y: snake[0].y});
                 score++;
                 ele_score.innerText = score;
-                snake_speed = Math.max(30, snake_speed - 1); // Decrease snake speed to increase its speed
+                snake_speed = Math.max(30, snake_speed - 1);
                 addFood();
+
+                if (score > highestScore) {
+                    highestScore = score;
+                    ele_highest_score.innerText = highestScore;
+                    localStorage.setItem('highestScore', highestScore); // Update localStorage with new highest score
+                }
             }
-    
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
             ctx.fillStyle = "green";
             snake.forEach(segment => {
                 ctx.fillRect(segment.x * BLOCK, segment.y * BLOCK, BLOCK, BLOCK);
             });
-    
+
             ctx.fillStyle = "red";
             ctx.fillRect(food.x * BLOCK, food.y * BLOCK, BLOCK, BLOCK);
-    
+
             setTimeout(mainLoop, snake_speed);
         }
-    
+
         function endGame() {
             gameOver = true;
             gameStarted = false;
             showScreen(SCREEN_GAME_OVER);
         }
-    
+
         function changeDir(code) {
             switch(code) {
                 case "KeyA":
@@ -287,7 +300,7 @@
                     break;
             }
         }
-    
+
         function addFood() {
             do {
                 food = {
@@ -296,7 +309,7 @@
                 };
             } while (snake.some(segment => checkBlock(food.x, food.y, segment.x, segment.y)));
         }
-    
+
         function checkBlock(x, y, _x, _y) {
             return (x === _x && y === _y);
         }
