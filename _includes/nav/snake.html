@@ -6,11 +6,6 @@
         padding: 0;
         background-color: #000;
         font-family: 'Roboto', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
     }
 
     .container {
@@ -21,6 +16,7 @@
         display: none;
         border: 2px solid #fff;
         border-radius: 8px;
+        margin-top: 20px;
         background-color: blue;
     }
 
@@ -60,6 +56,15 @@
     header {
         color: #fff;
     }
+
+    .flash {
+        animation: flash 0.2s;
+    }
+
+    @keyframes flash {
+        0% { background-color: yellow; }
+        100% { background-color: blue; }
+    }
 </style>
 
 <div class="container">
@@ -86,11 +91,9 @@
         <button id="fast">Fast</button>
         <p>No-Wall Mode</p>
         <button id="toggle_wall">No-Wall: <span id="wall_status">Off</span></button>
-        <p>Multiple Apples</p>
-        <button id="toggle_multiple_apples">Multiple Apples: <span id="multiple_apples_status">Off</span></button>
         <button id="back">Back</button>
     </div>
-    <canvas id="snake" width="640" height="640"></canvas> <!-- Increased canvas size -->
+    <canvas id="snake" width="320" height="320"></canvas>
 </div>
 
 <script>
@@ -104,10 +107,10 @@
         let highestScore = localStorage.getItem('highestScore') || 0;
         ele_highest_score.innerText = highestScore;
 
-        let snake, snake_dir, snake_next_dir, snake_speed = 100, food = [], score, wallEnabled = true, multipleApples = false, gameOver;
+        let snake, snake_dir, snake_next_dir, snake_speed = 100, food, score, wallEnabled = true, gameOver;
         let gameStarted = false;
         let paused = false;
-        let snakeSegmentsSet = new Set();
+        let snakeSegmentsSet = new Set();  // Set to store snake segments for faster collision checking
 
         const BLOCK = 16;
         const screen_menu = document.getElementById("menu");
@@ -146,8 +149,6 @@
             const fast = document.getElementById("fast");
             const toggleWall = document.getElementById("toggle_wall");
             const wallStatus = document.getElementById("wall_status");
-            const toggleMultipleApples = document.getElementById("toggle_multiple_apples");
-            const multipleApplesStatus = document.getElementById("multiple_apples_status");
 
             slow.onclick = () => setSnakeSpeed(150);
             medium.onclick = () => setSnakeSpeed(100);
@@ -155,12 +156,7 @@
 
             toggleWall.onclick = () => {
                 wallEnabled = !wallEnabled;
-                wallStatus.innerText = wallEnabled ? "On" : "Off";
-            };
-
-            toggleMultipleApples.onclick = () => {
-                multipleApples = !multipleApples;
-                multipleApplesStatus.innerText = multipleApples ? "On" : "Off";
+                wallStatus.innerText = wallEnabled ? "On" : "Off";  // Fix toggle text to match actual state
             };
         }
 
@@ -174,8 +170,8 @@
             snake = [{x: 0, y: 15}];
             snake_dir = 1;
             snake_next_dir = 1;
-            snakeSegmentsSet.clear();
-            snakeSegmentsSet.add("0,15");
+            snakeSegmentsSet.clear();  // Clear previous snake state
+            snakeSegmentsSet.add("0,15");  // Add starting segment
             gameOver = false;
             gameStarted = true;
             paused = false;
@@ -231,45 +227,40 @@
             const newHead = {x: _x, y: _y};
             const headKey = `${_x},${_y}`;
 
+            // Check if snake hits itself
             if (snakeSegmentsSet.has(headKey)) {
                 endGame();
                 return;
             }
 
-            snake.pop();
-            snakeSegmentsSet.delete(`${snake[snake.length - 1].x},${snake[snake.length - 1].y}`);
+            snake.pop();  // Remove tail
+            snakeSegmentsSet.delete(`${snake[snake.length - 1].x},${snake[snake.length - 1].y}`); // Remove from set
 
             snake.unshift(newHead);
-            snakeSegmentsSet.add(headKey);
+            snakeSegmentsSet.add(headKey);  // Add new head position to set
 
             if (wallEnabled && (newHead.x < 0 || newHead.x >= canvas.width / BLOCK || newHead.y < 0 || newHead.y >= canvas.height / BLOCK)) {
                 endGame();
                 return;
             }
 
-            let foodEaten = false;
-
-            for (let i = 0; i < food.length; i++) {
-                if (checkBlock(newHead.x, newHead.y, food[i].x, food[i].y)) {
-                    snake.push({x: newHead.x, y: newHead.y});
-                    snakeSegmentsSet.add(`${newHead.x},${newHead.y}`);
-                    score++;
-                    ele_score.innerText = score;
-                    snake_speed = Math.max(30, snake_speed - 1);
-                    food.splice(i, 1);
-                    foodEaten = true;
-                    break;
-                }
-            }
-
-            if (foodEaten || food.length === 0) {
+            if (checkBlock(newHead.x, newHead.y, food.x, food.y)) {
+                snake.push({x: newHead.x, y: newHead.y});
+                snakeSegmentsSet.add(`${newHead.x},${newHead.y}`);
+                score++;
+                ele_score.innerText = score;
+                snake_speed = Math.max(30, snake_speed - 1);
                 addFood();
-            }
 
-            if (score > highestScore) {
-                highestScore = score;
-                ele_highest_score.innerText = highestScore;
-                localStorage.setItem('highestScore', highestScore);
+                // Add visual flash feedback when eating food
+                canvas.classList.add('flash');
+                setTimeout(() => canvas.classList.remove('flash'), 100);
+
+                if (score > highestScore) {
+                    highestScore = score;
+                    ele_highest_score.innerText = highestScore;
+                    localStorage.setItem('highestScore', highestScore);
+                }
             }
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -280,9 +271,7 @@
             });
 
             ctx.fillStyle = "red";
-            food.forEach(apple => {
-                ctx.fillRect(apple.x * BLOCK, apple.y * BLOCK, BLOCK, BLOCK);
-            });
+            ctx.fillRect(food.x * BLOCK, food.y * BLOCK, BLOCK, BLOCK);
 
             setTimeout(mainLoop, snake_speed);
         }
@@ -311,19 +300,12 @@
         }
 
         function addFood() {
-            const numApples = multipleApples ? 3 : 1;  // Add up to 3 apples if multipleApples is enabled
-
-            while (food.length < numApples) {
-                const newFood = {
+            do {
+                food = {
                     x: Math.floor(Math.random() * (canvas.width / BLOCK)),
                     y: Math.floor(Math.random() * (canvas.height / BLOCK))
                 };
-
-                if (!snake.some(segment => checkBlock(newFood.x, newFood.y, segment.x, segment.y)) &&
-                    !food.some(apple => checkBlock(newFood.x, newFood.y, apple.x, apple.y))) {
-                    food.push(newFood);
-                }
-            }
+            } while (snake.some(segment => checkBlock(food.x, food.y, segment.x, segment.y)));
         }
 
         function checkBlock(x, y, _x, _y) {
