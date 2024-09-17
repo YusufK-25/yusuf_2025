@@ -13,11 +13,12 @@
     }
 
     canvas {
+        /* Initially hidden */
         display: none;
         border: 2px solid #fff;
         border-radius: 8px;
         margin-top: 20px;
-        background-color: blue; /* Set canvas background to blue */
+        background-color: blue;
     }
 
     button {
@@ -87,7 +88,6 @@
     <canvas id="snake" width="320" height="320"></canvas>
 </div>
 
-
 <script>
     (function(){
         const canvas = document.getElementById("snake");
@@ -111,7 +111,34 @@
         const SCREEN_SNAKE = 0, SCREEN_GAME_OVER = 1, SCREEN_MENU = 2, SCREEN_SETTING = 3;
 
         function showScreen(screen) {
-            // Function unchanged
+            switch (screen) {
+                case SCREEN_SNAKE:
+                    canvas.style.display = "block"; // Show the game canvas
+                    screen_menu.style.display = "none";
+                    screen_game_over.style.display = "none";
+                    screen_setting.style.display = "none";
+                    break;
+                case SCREEN_GAME_OVER:
+                    canvas.style.display = "none"; // Hide the canvas when game over
+                    screen_menu.style.display = "none";
+                    screen_game_over.style.display = "block";
+                    screen_setting.style.display = "none";
+                    document.getElementById("final_score").innerText = score;
+                    document.getElementById("final_highest_score").innerText = highestScore; // Update game over screen with highest score
+                    break;
+                case SCREEN_MENU:
+                    canvas.style.display = "none"; // Hide canvas in the menu
+                    screen_menu.style.display = "block";
+                    screen_game_over.style.display = "none";
+                    screen_setting.style.display = "none";
+                    break;
+                case SCREEN_SETTING:
+                    canvas.style.display = "none"; // Hide canvas in the settings
+                    screen_menu.style.display = "none";
+                    screen_game_over.style.display = "none";
+                    screen_setting.style.display = "block";
+                    break;
+            }
         }
 
         window.onload = function() {
@@ -166,7 +193,7 @@
             window.removeEventListener("keydown", handleKeydown);
             window.addEventListener("keydown", handleKeydown);
 
-            showScreen(SCREEN_SNAKE);
+            showScreen(SCREEN_SNAKE); // Ensure the game canvas is shown
             mainLoop();
         }
 
@@ -204,7 +231,6 @@
             }
 
             if (!wallEnabled) {
-                // Wrapping the snake position when it goes off-screen
                 _x = (_x + canvas.width / BLOCK) % (canvas.width / BLOCK);
                 _y = (_y + canvas.height / BLOCK) % (canvas.height / BLOCK);
                 if (_x < 0) _x = canvas.width / BLOCK - 1;
