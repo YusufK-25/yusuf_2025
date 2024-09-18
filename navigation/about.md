@@ -128,7 +128,11 @@ permalink: /about/
         container.appendChild(gridItem);
     }
 </script>
-
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <img src="{{site.baseurl}}/images/about.md_images/cat.webp" alt="Image 1" style="width: 150px; height: auto; object-fit: cover;">
+  <img src="{{site.baseurl}}/images/about.md_images/Family.jpg" alt="Image 2" style="width: 150px; height: auto; object-fit: cover;">
+  <img src="{{site.baseurl}}/images/about.md_images/Food.jpg" alt="Image 3" style="width: 150px; height: auto; object-fit: cover;">
+</div>
 <!-- Use this script to add comments to your blog posts manually -->
 <script src="https://utteranc.es/client.js"
         repo="YusufK-25/yusuf_2025"
