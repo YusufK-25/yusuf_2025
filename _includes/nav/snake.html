@@ -6,6 +6,11 @@
         padding: 0;
         background-color: #000;
         font-family: 'Roboto', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
     }
 
     .container {
@@ -13,11 +18,10 @@
     }
 
     canvas {
-        display: none; /* Initially hidden, only shown during the game */
+        display: none; /* Initially hidden */
         border: 2px solid #fff;
         border-radius: 8px;
-        margin-top: 20px;
-        background-color: black; /* Set to black for visibility */
+        background-color: blue;
     }
 
     button {
@@ -82,9 +86,11 @@
         <button id="fast">Fast</button>
         <p>No-Wall Mode</p>
         <button id="toggle_wall">No-Wall: <span id="wall_status">Off</span></button>
+        <p>Multiple Apples</p>
+        <button id="toggle_multiple_apples">Multiple Apples: <span id="multiple_apples_status">Off</span></button>
         <button id="back">Back</button>
     </div>
-    <canvas id="snake" width="320" height="320"></canvas>
+    <canvas id="snake" width="640" height="640"></canvas>
 </div>
 
 <script>
@@ -98,10 +104,10 @@
         let highestScore = localStorage.getItem('highestScore') || 0;
         ele_highest_score.innerText = highestScore;
 
-        let snake, snake_dir, snake_next_dir, snake_speed = 100, food, score, wallEnabled = true, gameOver;
+        let snake, snake_dir, snake_next_dir, snake_speed = 100, food = [], score, wallEnabled = true, multipleApples = false, gameOver;
         let gameStarted = false;
         let paused = false;
-        let snakeSegmentsSet = new Set();  // Set to store snake segments for faster collision checking
+        let snakeSegmentsSet = new Set();
 
         const BLOCK = 16;
         const screen_menu = document.getElementById("menu");
@@ -110,7 +116,6 @@
 
         const SCREEN_SNAKE = 0, SCREEN_GAME_OVER = 1, SCREEN_MENU = 2, SCREEN_SETTING = 3;
 
-        // Function to show the relevant screen
         function showScreen(screen) {
             canvas.style.display = (screen === SCREEN_SNAKE) ? "block" : "none";
             screen_menu.style.display = (screen === SCREEN_MENU) ? "block" : "none";
@@ -118,13 +123,6 @@
             screen_setting.style.display = (screen === SCREEN_SETTING) ? "block" : "none";
         }
 
-        // Test drawing: A simple red rectangle to verify canvas is visible
-        function testCanvasDrawing() {
-            ctx.fillStyle = "red";
-            ctx.fillRect(10, 10, 100, 100); // Draw a red rectangle for debugging
-        }
-
-        // Load the game
         window.onload = function() {
             const button_new_game = document.getElementById("new_game");
             const button_play_again = document.getElementById("play_again");
@@ -148,6 +146,8 @@
             const fast = document.getElementById("fast");
             const toggleWall = document.getElementById("toggle_wall");
             const wallStatus = document.getElementById("wall_status");
+            const toggleMultipleApples = document.getElementById("toggle_multiple_apples");
+            const multipleApplesStatus = document.getElementById("multiple_apples_status");
 
             slow.onclick = () => setSnakeSpeed(150);
             medium.onclick = () => setSnakeSpeed(100);
@@ -156,6 +156,11 @@
             toggleWall.onclick = () => {
                 wallEnabled = !wallEnabled;
                 wallStatus.innerText = wallEnabled ? "On" : "Off";
+            };
+
+            toggleMultipleApples.onclick = () => {
+                multipleApples = !multipleApples;
+                multipleApplesStatus.innerText = multipleApples ? "On" : "Off";
             };
         }
 
@@ -166,11 +171,11 @@
         function newGame() {
             score = 0;
             ele_score.innerText = score;
-            snake = [{x: 5, y: 5}]; // Start snake in the middle of the canvas
-            snake_dir = 1; // Right
+            snake = [{x: 0, y: 15}];
+            snake_dir = 1;  // Start moving right
             snake_next_dir = 1;
             snakeSegmentsSet.clear();
-            snakeSegmentsSet.add("5,5");
+            snakeSegmentsSet.add("0,15");
             gameOver = false;
             gameStarted = true;
             paused = false;
@@ -180,7 +185,6 @@
             window.addEventListener("keydown", handleKeydown);
 
             showScreen(SCREEN_SNAKE);
-            testCanvasDrawing();  // Call test to draw the red rectangle
             mainLoop();
         }
 
@@ -206,17 +210,18 @@
         function mainLoop() {
             if (gameOver || paused) return;
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas before drawing
-
             let _x = snake[0].x;
             let _y = snake[0].y;
             snake_dir = snake_next_dir;
 
+            // Log snake head position for debugging
+            console.log("Snake Head:", _x, _y);
+
             switch(snake_dir){
-                case 0: _y--; break; // Up
-                case 1: _x++; break; // Right
-                case 2: _y++; break; // Down
-                case 3: _x--; break; // Left
+                case 0: _y--; break;
+                case 1: _x++; break;
+                case 2: _y++; break;
+                case 3: _x--; break;
             }
 
             if (!wallEnabled) {
@@ -229,13 +234,12 @@
             const newHead = {x: _x, y: _y};
             const headKey = `${_x},${_y}`;
 
-            // Check if snake hits itself
             if (snakeSegmentsSet.has(headKey)) {
                 endGame();
                 return;
             }
 
-            snake.pop();  // Remove tail
+            snake.pop();
             snakeSegmentsSet.delete(`${snake[snake.length - 1].x},${snake[snake.length - 1].y}`);
 
             snake.unshift(newHead);
@@ -246,24 +250,45 @@
                 return;
             }
 
-            if (checkBlock(newHead.x, newHead.y, food.x, food.y)) {
-                snake.push({x: newHead.x, y: newHead.y});
-                snakeSegmentsSet.add(`${newHead.x},${newHead.y}`);
-                score++;
-                ele_score.innerText = score;
-                snake_speed = Math.max(30, snake_speed - 1);
+            // Log food array for debugging
+            console.log("Food Array:", food);
+
+            let foodEaten = false;
+            for (let i = 0; i < food.length; i++) {
+                if (checkBlock(newHead.x, newHead.y, food[i].x, food[i].y)) {
+                    snake.push({x: newHead.x, y: newHead.y});
+                    snakeSegmentsSet.add(`${newHead.x},${newHead.y}`);
+                    score++;
+                    ele_score.innerText = score;
+                    snake_speed = Math.max(30, snake_speed - 1);
+                    food.splice(i, 1);
+                    foodEaten = true;
+                    break;
+                }
+            }
+
+            if (foodEaten || food.length === 0) {
                 addFood();
             }
 
-            // Draw snake
+            if (score > highestScore) {
+                highestScore = score;
+                ele_highest_score.innerText = highestScore;
+                localStorage.setItem('highestScore', highestScore);
+            }
+
+            // Clear the canvas and draw the snake and food
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             ctx.fillStyle = "green";
             snake.forEach(segment => {
                 ctx.fillRect(segment.x * BLOCK, segment.y * BLOCK, BLOCK, BLOCK);
             });
 
-            // Draw food
             ctx.fillStyle = "red";
-            ctx.fillRect(food.x * BLOCK, food.y * BLOCK, BLOCK, BLOCK);
+            food.forEach(apple => {
+                ctx.fillRect(apple.x * BLOCK, apple.y * BLOCK, BLOCK, BLOCK);
+            });
 
             setTimeout(mainLoop, snake_speed);
         }
@@ -292,12 +317,21 @@
         }
 
         function addFood() {
-            do {
-                food = {
+            const numApples = multipleApples ? 3 : 1;
+
+            while (food.length < numApples) {
+                const newFood = {
                     x: Math.floor(Math.random() * (canvas.width / BLOCK)),
                     y: Math.floor(Math.random() * (canvas.height / BLOCK))
                 };
-            } while (snake.some(segment => checkBlock(food.x, food.y, segment.x, segment.y)));
+
+                if (!snake.some(segment => checkBlock(newFood.x, newFood.y, segment.x, segment.y)) &&
+                    !food.some(apple => checkBlock(newFood.x, newFood.y, apple.x, apple.y))) {
+                    food.push(newFood);
+                }
+            }
+
+            console.log("New Food Added:", food);  // Log when new food is added
         }
 
         function checkBlock(x, y, _x, _y) {
