@@ -3,8 +3,10 @@ layout: page
 title: Ideas
 permalink: /ideas
 ---
-
+F
 {% include nav/ideas.html %}
+
+Future home of ideas page.
 
 <!-- Use this script to add comments to your blog posts manually -->
 <script src="https://utteranc.es/client.js"

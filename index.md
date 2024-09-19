@@ -219,10 +219,11 @@ My journey starts here.
 - Focus on tehnical communications through project presentations and student led teaching
 - Grades are on projects, learnt concepts, and live reviews between student(s) and teacher
 ```
-
-Jelly Fish Fun
-
-![image](https://github.com/user-attachments/assets/b14a08d2-d792-4b2f-aed5-e150490871af)
+---
+## Kat Joke
+ <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+ <img src="{{site.baseurl}}/images/about.md_images/cat.webp" alt="Image 1" style="width: 150px; height: auto; object-fit: cover;"> 
+</div>
 
 <!-- Use this script to add comments to your blog posts manually -->
 <script src="https://utteranc.es/client.js"

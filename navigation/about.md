@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: About Me
 description: Hi! I'm Yusuf
 permalink: /about/
@@ -129,9 +129,8 @@ permalink: /about/
     }
 </script>
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="{{site.baseurl}}/images/about.md_images/cat.webp" alt="Image 1" style="width: 150px; height: auto; object-fit: cover;">
-  <img src="{{site.baseurl}}/images/about.md_images/Family.jpg" alt="Image 2" style="width: 150px; height: auto; object-fit: cover;">
-  <img src="{{site.baseurl}}/images/about.md_images/Food.jpg" alt="Image 3" style="width: 150px; height: auto; object-fit: cover;">
+  <img src="{{site.baseurl}}/images/about.md_images/Family.jpg" alt="Image 1" style="width: 150px; height: auto; object-fit: cover;">
+  <img src="{{site.baseurl}}/images/about.md_images/Food.jpg" alt="Image 2" style="width: 150px; height: auto; object-fit: cover;">
 </div>
 <!-- Use this script to add comments to your blog posts manually -->
 <script src="https://utteranc.es/client.js"
