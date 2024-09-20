@@ -81,7 +81,7 @@ permalink: /about/
 <p>Hi! I’m Yusuf Khan, part of the class of 2027 enrolled in DNHS. I was born in San Diego, but my heritage is from Pakistan. You’ll find me reading, playing games, ~~or crying in the corner~~ when I'm not working or studying. <em>I love staying active and inspired.</em> I have no experience in coding, but that's why I'm here.</p>
 
 <h2>What schools I came from</h2>
-<p>I went to elementary school in Monterey Ridge, where I stayed until I graduated. I then went to OVMS for middle school, where I graduated in 2022.</p>
+<p>I went to elementary school in Monterey Ridge, where I stayed until I graduated. I then went to OVMS for middle school, where I graduated in 2023.</p>
 
 <h2>Where I've lived in the World</h2>
 
