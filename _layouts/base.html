@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% if site.remote_theme contains 'minima' %}
   {%- include theme/minima/base.html -%}
@@ -12,5 +11,8 @@
   {%- include theme/time-machine/base.html -%}
 {% elsif site.remote_theme contains 'cayman' %}
   {%- include theme/cayman/base.html -%}
+{% elsif site.remote_theme contains 'merlot' %}
+  {%- include 'default.html' -%}  <!-- Fixed include syntax -->
 {% endif %}
+
 </html>

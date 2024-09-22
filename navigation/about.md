@@ -9,12 +9,11 @@ permalink: /about/
 
 <style>
     /* Style the page titles */
-    /* h1 = largest, h3 = smallest
     h1, h2, h3 {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
         text-align: center; /* Center the titles */
-        color: #2a4d69; /* Custom title color */
+        color: white; /* Change title color to white */
         margin-bottom: 20px;
     }
     
@@ -55,14 +54,16 @@ permalink: /about/
         margin: 0 auto;
     }
 
+    /* Change text color to black */
     .grid-item p {
         margin: 5px 0; /* Add some margin for spacing */
+        color: black; /* Change text color to black */
     }
 
     .grid-item p:first-of-type {
         font-family: 'Dancing Script', cursive; /* Fancy cursive font for greetings */
         font-size: 24px; /* Larger font size for greetings */
-        color: #2a4d69; /* Custom color for the text */
+        color: black; /* Change greeting text color to black */
     }
     
     /* Style the descriptive text sections */
@@ -74,8 +75,6 @@ permalink: /about/
         color: #333;
     }
 </style>
-
-<!-- Titles of the sections (Remove the duplicate <h1> About Me) -->
 
 <h2>Who I am</h2>
 <p>Hi! I’m Yusuf Khan, part of the class of 2027 enrolled in DNHS. I was born in San Diego, but my heritage is from Pakistan. You’ll find me reading, playing games, ~~or crying in the corner~~ when I'm not working or studying. <em>I love staying active and inspired.</em> I have no experience in coding, but that's why I'm here.</p>
@@ -91,49 +90,40 @@ permalink: /about/
 </div>
 
 <script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
+    var container = document.getElementById("grid_container"); 
 
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
         {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - Lived here my whole life"},
         {"flag": "3/32/Flag_of_Pakistan.svg", "greeting": "Salaam", "description": "Pakistan - I occasionally visit"},
     ]; 
     
-    // 3a. Build grid items inside of our container for each row of data
     for (const location of living_in_the_world) {
-        // Create a "div" with "class grid-item" for each row
         var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
+        gridItem.className = "grid-item";  
         var img = document.createElement("img");
-        img.src = http_source + location.flag; // concatenate the source and flag
-        img.alt = location.flag + " Flag"; // add alt text for accessibility
+        img.src = http_source + location.flag; 
+        img.alt = location.flag + " Flag"; 
 
-        // Add "p" HTML tag for the description
         var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
+        description.textContent = location.description; 
 
-        // Add "p" HTML tag for the greeting
         var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
+        greeting.textContent = location.greeting;  
 
-        // Append img and p HTML tags to the grid item DIV
         gridItem.appendChild(img);
         gridItem.appendChild(description);
         gridItem.appendChild(greeting);
 
-        // Append the grid item DIV to the container DIV
         container.appendChild(gridItem);
     }
 </script>
+
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
   <img src="{{site.baseurl}}/images/about.md_images/Family.jpg" alt="Image 1" style="width: 150px; height: auto; object-fit: cover;">
   <img src="{{site.baseurl}}/images/about.md_images/Food.jpg" alt="Image 2" style="width: 150px; height: auto; object-fit: cover;">
 </div>
 
-<!-- Use this script to add comments to your blog posts manually -->
 <script src="https://utteranc.es/client.js"
         repo="YusufK-25/yusuf_2025"
         issue-term="title"
