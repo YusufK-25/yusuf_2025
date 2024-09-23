@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Snake
-permalink: /snake
-comments: false
+title: Code
+Description: Different Types of Code
+permalink: /code
 ---
 
-{% include nav/snake.html %}
+{% include nav/md.html %}
 
 <script src="https://utteranc.es/client.js"
         repo="YusufK-25/yusuf_2025"
