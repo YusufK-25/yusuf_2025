@@ -75,6 +75,22 @@ permalink: /about/
         text-align: center; /* Center the paragraph text */
         color: #333;
     }
+
+    /* Horizontal scrolling for images */
+    .image-container {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto; /* Allow horizontal scrolling */
+        white-space: nowrap; /* Prevent wrapping of images to new lines */
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .image-container img {
+        width: 150px;
+        height: auto;
+        object-fit: contain; /* Ensure no cropping */
+    }
 </style>
 
 <h2>Who I am</h2>
@@ -120,9 +136,12 @@ permalink: /about/
     }
 </script>
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="{{site.baseurl}}/images/about.md_images/Family.jpg" alt="Image 1" style="width: 150px; height: auto; object-fit: cover;">
-  <img src="{{site.baseurl}}/images/about.md_images/Food.jpg" alt="Image 2" style="width: 150px; height: auto; object-fit: cover;">
+<!-- Scrollable image section -->
+<div class="image-container">
+  <img src="{{site.baseurl}}/images/about.md_images/Family.jpg" alt="Image 1">
+  <img src="{{site.baseurl}}/images/about.md_images/family2.jpg" alt="Image 2">
+  <img src="{{site.baseurl}}/images/about.md_images/Food.jpg" alt="Image 3">
+  <img src="{{site.baseurl}}/images/about.md_images/motivation.jpg" alt="Image 4">
 </div>
 
 <script src="https://utteranc.es/client.js"
