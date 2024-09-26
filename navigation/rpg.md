@@ -4,13 +4,23 @@ title: RPG
 permalink: /rpg/
 ---
 
+
+<div id="indicator" style="display: none;">Music is Playing!</div>
+
+<script>
+    // Set the audio path using Liquid and define it globally
+    window.audioPath = '{{site.baseurl}}/assets/sounds/rpgSong.mp3';
+</script>
+<script src="{{site.baseurl}}/assets/js/rpg/rpgMusic.js"></script>
+
+
 <canvas id='gameCanvas'></canvas>
 
 <script type="module">
     import GameControl from '{{site.baseurl}}/assets/js/rpg/GameControl.js';
 
     // Background data
-    const image_src = "{{site.baseurl}}/images/rpg/water.png";
+    const image_src = "{{site.baseurl}}/images/rpg/ocean.jpg";
     const image_data = {
         pixels: {height: 580, width: 1038}
     };
