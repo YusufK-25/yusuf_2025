@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Snake
-permalink: /snake
+permalink: /snake/
 comments: false
 ---
 

@@ -4,7 +4,6 @@ title: Code
 Description: Different Types of Code
 permalink: /code
 ---
-<br>
 {% include nav/code.html %}
 
 <script src="https://utteranc.es/client.js"
