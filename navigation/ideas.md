@@ -39,7 +39,7 @@ permalink: /ideas
     </tr>
     <tr>
         <td>Levels with different backgrounds</td>
-        <td>I wanted to include different levels, such as an introductory level which teaches the player how to play the game, and different levels with different enemy sprites. The level's purpose would be to survive for an amount of time, which wouldn't impact the score in any way, as the score's purpose is different.</td>
+        <td>I initally wanted to include different levels, such as an introductory level which teaches the player how to play the game, and different levels with different enemy sprites. The level's purpose would be to survive for an amount of time, which wouldn't impact the score in any way, as the score's purpose is different. However, after watching some presentations, I realised that this wouldn't be sustainable, and decided to change the idea to instead have a random sprite and random background every time the game loaded.</td>
     </tr>
     <tr>
         <td>Sound effects</td>
