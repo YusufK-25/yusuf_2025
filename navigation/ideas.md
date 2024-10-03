@@ -45,4 +45,8 @@ permalink: /ideas
         <td>Sound effects</td>
         <td>I already have background music, but after I add the monster, I want to have sound effects for when a power-up is claimed, when the monster catches you, when the background changes, and when the game ends.</td>
     </tr>
+        <tr>
+        <td>End Screen/Game Over</td>
+        <td> Game over screen that prompts you to play again.</td>
+    </tr>
 </table>
