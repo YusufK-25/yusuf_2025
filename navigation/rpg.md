@@ -54,4 +54,8 @@ permalink: /rpg/
 
     // Start game engine
     GameControl.start(assets);
+
+    // Play background music
+    console.log('Attempting to play background music');
+    rpgMusic.play();
 </script>
