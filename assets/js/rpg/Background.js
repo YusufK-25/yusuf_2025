@@ -12,7 +12,7 @@ export class Background {
 
     /* To draws are used to capture primary frame and wrap around to next frame
      * x to y is primary draw
-     * x + width to y is wrap around draw
+     * x + width to y is wrap around adraw
     */
     draw() {
         const ctx = GameEnv.ctx;
