@@ -8,6 +8,7 @@ permalink: /rpg/
 
 <script type="module">
     import GameControl from '{{site.baseurl}}/assets/js/rpg/GameControl.js';
+    import rpgMusic from '{{site.baseurl}}/assets/js/rpg/rpgMusic.js';
 
     // Background data
     const image_src = "{{site.baseurl}}/images/rpg/water.png";
@@ -46,10 +47,10 @@ permalink: /rpg/
 
     const fish = {src: sprite_src_fish, data: sprite_data_fish};
     // Assets for game
-    //const assets = {}
-    //const assets = {image: image}
-    //const assets = {turtle: turtle}
-    const assets = {image: image, turtle: turtle, fish: fish}
+    const assets = {image: image, turtle: turtle, fish: fish};
+
+    // Debugging: Log assets to ensure they are correctly defined
+    console.log('Assets:', assets);
 
     // Start game engine
     GameControl.start(assets);
