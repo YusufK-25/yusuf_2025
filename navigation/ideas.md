@@ -5,12 +5,56 @@ description: A blog describing the popcorn and ideation hacks
 permalink: /ideas
 ---
 
-## Popcorn Hacks
+# Popcorn Hacks
 
-## Ideation Hacks
+## Turtle RPG Game Setup
+```markdown
+> Begin With Setting Up Game Files
+- Open both your project directory as well as the portfolio_2025 repository
+- Navigate into the virtual environment for both of them and run code .
+- If venv is not installed in one or both directories, there are two options
+- 1. Give up and cry a little
+- 2. Run ./activate/venv.sh
+- Navigate to config.yml and copy the "navigation/rpg.md" command into yours
+- Navigate into images on both repositories and drag and drop the rpg folder
+- Exit images, and create a new folder under assets named js, standing for javascript
+- Drag and drop his entire rpg folder.
+```
+---
+
+<h2>Popcorn Hack For JSON Object</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>File</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>rpg.md</code></td>
+            <td>Sets up the necessary elements and data for a web-based RPG, including the layout, music, background image, sprite assets, and animations. It starts the game engine.</td>
+        </tr>
+        <tr>
+            <td><code>gamecontrol.js</code></td>
+            <td>Manages the game loop, rendering, canvas creation, game environment, and interactions.</td>
+        </tr>
+        <tr>
+            <td><code>gameenv.js</code></td>
+            <td>Handles background size and sets up the background.</td>
+        </tr>
+        <tr>
+            <td><code>player.js</code></td>
+            <td>Controls player movement, loads the player sprite sheet, and manages animations.</td>
+        </tr>
+    </tbody>
+</table>
+
+# Ideation Hacks
 > Possible ideas for the RPG game
 
-<h1>Ideas</h1>
+## Ideas
 
 <table>
     <tr>
@@ -19,34 +63,18 @@ permalink: /ideas
     </tr>
     <tr>
         <td>Monster</td>
-        <td>One possible idea that could be implemented into the game is a monster that chases the main character around.</td>
+        <td>Introduce various monsters with different abilities and strengths to challenge the player.</td>
     </tr>
     <tr>
-        <td>Walls/Map</td>
-        <td>In addition to the monster chasing the sprite around, there could be walls so that the game isn't too easy.</td>
+        <td>Quests</td>
+        <td>Add quests that the player can complete for rewards and progression.</td>
     </tr>
     <tr>
-        <td>Score and Timer</td>
-        <td>To make the game more engaging, a score could be added to the top of the page. This would foster an environment in which individuals would compare scores. The way the scores would work would be based on how many enemies were defeated.</td>
+        <td>Items</td>
+        <td>Include items that the player can collect, use, or trade.</td>
     </tr>
     <tr>
-        <td>Weapons</td>
-        <td>To make the game more interesting, I want to add weapons with which the monsters can be defeated, such as a sword or a gun. The weapons could appear automatically when the game reaches a certain score, which avoids boredom.</td>
-    </tr> 
-    <tr>
-        <td>Power ups</td>
-        <td>There should be some power-ups that appear randomly across the screen at random times, which allow the character to move faster, attack faster, and more.</td>
-    </tr>
-    <tr>
-        <td>Levels with different backgrounds</td>
-        <td>I initally wanted to include different levels, such as an introductory level which teaches the player how to play the game, and different levels with different enemy sprites. The level's purpose would be to survive for an amount of time, which wouldn't impact the score in any way, as the score's purpose is different. However, after watching some presentations, I realised that this wouldn't be sustainable, and decided to change the idea to instead have a random sprite and random background every time the game loaded.</td>
-    </tr>
-    <tr>
-        <td>Sound effects</td>
-        <td>I already have background music, but after I add the monster, I want to have sound effects for when a power-up is claimed, when the monster catches you, when the background changes, and when the game ends.</td>
-    </tr>
-        <tr>
-        <td>End Screen/Game Over</td>
-        <td> Game over screen that prompts you to play again.</td>
+        <td>Multiplayer</td>
+        <td>Implement a multiplayer mode where players can interact and compete with each other.</td>
     </tr>
 </table>
