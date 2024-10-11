@@ -3,6 +3,7 @@ layout: base
 title: RPG
 permalink: /rpg/
 ---
+
 <div id="indicator" style="display: none;">Music is Playing!</div>
 
 <script>
@@ -10,8 +11,7 @@ permalink: /rpg/
     window.audioPath = '{{site.baseurl}}/assets/sounds/rpgSong.mp3';
 </script>
 
-<script src="{{site.baseurl}}/assets/js/rpg/rpgMusic.js">
-</script> 
+<script src="{{site.baseurl}}/assets/js/rpg/rpgMusic.js"></script> 
 
 
 <style>

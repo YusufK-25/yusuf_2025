@@ -30,9 +30,7 @@ permalink: /ideas/
             <li>Drag and drop his entire rpg folder.</li>
         </ul>
     </blockquote>
-
     <h2>Popcorn Hack For JSON Object</h2>
-
     <table>
         <thead>
             <tr>
@@ -60,14 +58,13 @@ permalink: /ideas/
         </tbody>
     </table>
 
-    <h1>Ideation Hacks</h1>
+<h1>Ideation Hacks</h1>
     <blockquote>
         <p>Possible ideas for the RPG game</p>
     </blockquote>
 
-    <h2>Ideas</h2>
-
-    <table>
+<h2>Ideas</h2>
+<table>
         <thead>
             <tr>
                 <th>Ideas</th>
@@ -93,8 +90,7 @@ permalink: /ideas/
             </tr>
         </tbody>
     </table>
-
-    <h2>Example JavaScript Code</h2>
+<h2>Example JavaScript Code</h2>
     <pre><code>
 // Define a JSON object
 const person = {
