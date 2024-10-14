@@ -34,7 +34,7 @@ permalink: /rpg1x/
 </div>
 
 <script type="module">
-    import GameControl from '{{site.baseurl}}/assets/js/rpg0x/GameControl.js';
+    import GameControl from '{{site.baseurl}}/assets/js/rpg1x/GameControl.js';
 
     const path = "{{site.baseurl}}";
 

@@ -6,7 +6,7 @@ permalink: /rpg0x/
 
 <canvas id='gameCanvas'></canvas>
 <script type="module">
-    import GameControl from '{{site.baseurl}}/assets/js/rpg/GameControl.js';
+    import GameControl from '{{site.baseurl}}/assets/js/rpg0x/GameControl.js';
     // Background data
     const image_src = "{{site.baseurl}}/images/rpg/water.png";
     const image_data = {
