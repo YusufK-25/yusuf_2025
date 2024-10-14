@@ -189,40 +189,62 @@ hide: true
 
 </script>
 
-## Now including Mario!
-My journey starts here.
-
-### Markdown samples  [markdown cheatsheet](https://www.markdownguide.org/getting-started/)
-
-> Using markdown form index.md.  We are learning markdown.
-
-- This text below is something called Markdown. This is a heading, inside of code scaffolding.
-
-```markdown
-## Investing in Your Technical Future XXXYYY
-```
-
-- This is emphasis
-
-```markdown
-> Explore the Computer Science Pathway at Del Norte High School and invest in your technical skills. All Del Norte CompSci classes are designed to provide a real-world development experience. Class time includes tech talks (lectures), peer collaboration, communication with teachers, critical thinking while coding, and creativity in projects. Grading is focused on time invested, participation with peers, and engagement in learning.
-```
-
-- Sample of bullets
-
-```markdown
-- Introduction to concepts and requirements by the teacher
-- Project-based learning with teacher support, performing Agile/Scrum development
-- Coding, frontend, backend, devops, version control and algorithmic thinking
-- Creativity, research, design, data structures, and utilizing ChatGPT
-- Performing team work, team communication and collaboration, peer reviews/grading
-- Focus on tehnical communications through project presentations and student led teaching
-- Grades are on projects, learnt concepts, and live reviews between student(s) and teacher
-```
 ---
-## Kat Joke
- <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
- <img src="{{site.baseurl}}/images/about.md_images/cat.webp" alt="Image 1" style="width: 150px; height: auto; object-fit: cover;"> 
+
+## Home
+
+This blog contains my journey into Coding.
+
+### Development Environment
+
+> Coding starts with tools, explore these tools and procedures with a click.
+
+<br>
+
+### Game Progress
+
+> Here is my progress through game coding, click to see these online
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="{{site.baseurl}}/snake" style="text-decoration: none;">
+        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Snake Game
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/rpg0x" style="text-decoration: none;">
+        <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Turtle v0.0
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/rpg1x " style="text-decoration: none;">
+        <div style="background-color: #FF8800; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Turtle v0.1
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/rpg" style="text-decoration: none;">
+        <div style="background-color: #FFFF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Turtle v0.2
+        </div>
+    </a>
+</div>
+
+<br>
+
+### College Articulation
+
+> Here is my preparation for college topics, click to review my blogs
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
+        <div style="background-color: #000000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Variables I/O
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/data-types/" style="text-decoration: none;">
+        <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Data Types
+        </div>
+    </a>
 </div>
 
 <!-- Use this script to add comments to your blog posts manually -->
