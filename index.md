@@ -5,28 +5,15 @@ description: Home Page
 image: /images/mario_animation.png
 hide: true
 ---
-<!-- Liquid:  statements -->
 
-<!-- Include submenu from _includes to top of pages -->
 {% include nav/home.html %}
-<!--- Concatenation of site URL to frontmatter image  --->
 {% assign sprite_file = site.baseurl | append: page.image %}
-<!--- Has is a list variable containing mario metadata for sprite --->
 {% assign hash = site.data.mario_metadata %}  
-<!--- Size width/height of Sprit images --->
 {% assign pixels = 256 %}
 
-<!--- HTML for page contains <p> tag named "Mario" and class properties for a "sprite"  -->
-
 <p id="mario" class="sprite"></p>
-  
-<!--- Embedded Cascading Style Sheet (CSS) rules, 
-        define how HTML elements look 
---->
-<style>
 
-  /*CSS style rules for the id and class of the sprite...
-  */
+<style>
   .sprite {
     height: {{pixels}}px;
     width: {{pixels}}px;
@@ -34,39 +21,78 @@ hide: true
     background-repeat: no-repeat;
   }
 
-  /*background position of sprite element
-  */
   #mario {
-    background-position: calc({{animations[0].col}} * {{pixels}} * -1px) calc({{animations[0].row}} * {{pixels}}* -1px);
+    background-position: calc({{animations[0].col}} * {{pixels}} * -1px) calc({{animations[0].row}} * {{pixels}} * -1px);
   }
+
+  .styled-button {
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      color: white;
+      background-size: 200% 200%;
+  }
+
+  .styled-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Unique gradient for each button */
+  .button-snake {
+      background: linear-gradient(45deg, #32a852, #1abc9c);
+  }
+
+  .button-turtle-v0 {
+      background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+  }
+
+  .button-turtle-v1 {
+      background: linear-gradient(45deg, #f39c12, #f1c40f);
+  }
+
+  .button-turtle-v2 {
+      background: linear-gradient(45deg, #f1c40f, #e67e22);
+  }
+
+  .button-variables {
+      background: linear-gradient(45deg, #8e44ad, #9b59b6);
+  }
+
+  .button-data-types {
+      background: linear-gradient(45deg, #3498db, #2980b9);
+  }
+
+  .button-for-loops {
+      background: linear-gradient(45deg, #2ecc71, #27ae60);
+  }
+
 </style>
 
-<!--- Embedded executable code--->
 <script>
-  ////////// convert YML hash to javascript key:value objects /////////
-
-  var mario_metadata = {}; //key, value object
-  {% for key in hash %}  
+  var mario_metadata = {}; 
+  {% for key in hash %}
   
-  var key = "{{key | first}}"  //key
-  var values = {} //values object
+  var key = "{{key | first}}"
+  var values = {}
   values["row"] = {{key.row}}
   values["col"] = {{key.col}}
   values["frames"] = {{key.frames}}
-  mario_metadata[key] = values; //key with values added
+  mario_metadata[key] = values;
 
   {% endfor %}
 
-  ////////// game object for player /////////
-
   class Mario {
     constructor(meta_data) {
-      this.tID = null;  //capture setInterval() task ID
-      this.positionX = 0;  // current position of sprite in X direction
+      this.tID = null;
+      this.positionX = 0;
       this.currentSpeed = 0;
-      this.marioElement = document.getElementById("mario"); //HTML element of sprite
-      this.pixels = {{pixels}}; //pixel offset of images in the sprite, set by liquid constant
-      this.interval = 100; //animation time interval
+      this.marioElement = document.getElementById("mario");
+      this.pixels = {{pixels}};
+      this.interval = 100;
       this.obj = meta_data;
       this.marioElement.style.position = "absolute";
     }
@@ -128,8 +154,6 @@ hide: true
 
   const mario = new Mario(mario_metadata);
 
-  ////////// event control /////////
-
   window.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
@@ -152,35 +176,28 @@ hide: true
     }
   });
 
-  //touch events that enable animations
   window.addEventListener("touchstart", (event) => {
-    event.preventDefault(); // prevent default browser action
+    event.preventDefault();
     if (event.touches[0].clientX > window.innerWidth / 2) {
-      // move right
-      if (currentSpeed === 0) { // if at rest, go to walking
+      if (mario.currentSpeed === 0) {
         mario.startWalking();
-      } else if (currentSpeed === 3) { // if walking, go to running
+      } else if (mario.currentSpeed === 3) {
         mario.startRunning();
       }
     } else {
-      // move left
       mario.startPuffing();
     }
   });
 
-  //stop animation on window blur
   window.addEventListener("blur", () => {
     mario.stopAnimate();
   });
 
-  //start animation on window focus
   window.addEventListener("focus", () => {
-     mario.startFlipping();
+    mario.startFlipping();
   });
 
-  //start animation on page load or page refresh
   document.addEventListener("DOMContentLoaded", () => {
-    // adjust sprite size for high pixel density devices
     const scale = window.devicePixelRatio;
     const sprite = document.querySelector(".sprite");
     sprite.style.transform = `scale(${0.2 * scale})`;
@@ -203,26 +220,26 @@ This blog contains my journey into Coding.
 
 ### Game Progress
 
-> Here is my progress through game coding, click to see these online
+> Here is my progress through game coding, click to see these online.
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 15px;">
     <a href="{{site.baseurl}}/snake" style="text-decoration: none;">
-        <div style="background-color: #00FF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div class="styled-button button-snake">
             Snake Game
         </div>
     </a>
     <a href="{{site.baseurl}}/rpg0x" style="text-decoration: none;">
-        <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div class="styled-button button-turtle-v0">
             Turtle v0.0
         </div>
     </a>
-    <a href="{{site.baseurl}}/rpg1x " style="text-decoration: none;">
-        <div style="background-color: #FF8800; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+    <a href="{{site.baseurl}}/rpg1x" style="text-decoration: none;">
+        <div class="styled-button button-turtle-v1">
             Turtle v0.1
         </div>
     </a>
     <a href="{{site.baseurl}}/rpg" style="text-decoration: none;">
-        <div style="background-color: #FFFF00; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div class="styled-button button-turtle-v2">
             Turtle v0.2
         </div>
     </a>
@@ -232,22 +249,31 @@ This blog contains my journey into Coding.
 
 ### College Articulation
 
-> Here is my preparation for college topics, click to review my blogs
+> Here is my preparation for college topics, click to review my blogs.
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
     <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
-        <div style="background-color: #000000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div class="styled-button button-variables">
             Variables I/O
         </div>
     </a>
     <a href="{{site.baseurl}}/csse/javascript/fundamentals/data-types/" style="text-decoration: none;">
-        <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        <div class="styled-button button-data-types">
             Data Types
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
+        <div class="styled-button button-for-loops">
+            Variables
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/for-loops" style="text-decoration: none;">
+        <div class="styled-button button-for-loops">
+            For loops and sprites
         </div>
     </a>
 </div>
 
-<!-- Use this script to add comments to your blog posts manually -->
 <script src="https://utteranc.es/client.js"
         repo="YusufK-25/yusuf_2025"
         issue-term="title"

@@ -1,7 +1,7 @@
-import Player from "./Player.js";
 import GameEnv from "./GameEnv.js";
+import GameObject from "./GameObject.js";
 
-class NPC extends Player {
+class NpcFrog extends GameObject {
     constructor(data = null) {
         super(data);
         this.alertTimeout = null;
@@ -84,7 +84,7 @@ class NPC extends Player {
      */
     checkProximityToNPC() {
         // Filter all Player objects from the game environment
-        var players = GameEnv.gameObjects.filter(obj => obj instanceof Player);
+        var players = GameEnv.gameObjects.filter(obj => obj instanceof GameObject);
         var npc = this;
         var names = [];
 
@@ -95,26 +95,19 @@ class NPC extends Player {
                     Math.pow(player.position.x - npc.position.x, 2) + Math.pow(player.position.y - npc.position.y, 2)
                 );
                 // The distance is less than 100 pixels
-                if (player !== npc && distance <= 100) {
+                if (player != npc && distance <= 100) {
                     names.push(player.spriteData.name);
                 }
             });
-
             // Join all player names inside the proximity
             if (names.length > 0) {
-                if (distance < 35) {
-                    this.handleResponse(`You still have got a long way to go!`);
-                } else {
-                    this.handleResponse(`You are almost at your reward!`);
-                }
-            } else {
                 this.handleResponse(`Hello, ${names.join(', ')}`);
             }
         }
     }
 }
 
-export default NPC;
+export default NpcFrog;
 
 /**
  * Show the custom alert with the given message.
