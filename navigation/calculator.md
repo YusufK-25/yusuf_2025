@@ -20,18 +20,18 @@ courses: { week: {week: 8} }
   }
   /* Calculator container styling */
   #calculator {
-    width: 500px; /* Increased width for a wider layout */
+    width: 700px; /* Further increased width for a more spacious layout */
     margin: 50px auto;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    padding: 30px; /* Additional padding for spacing */
+    padding: 30px;
   }
   /* Display screen styling */
   #display {
     width: 100%;
-    height: 80px; /* Increased height */
-    font-size: 32px; /* Larger font for readability */
+    height: 80px;
+    font-size: 34px; /* Larger font for readability */
     text-align: right;
     padding: 15px;
     margin-bottom: 25px;
@@ -41,10 +41,10 @@ courses: { week: {week: 8} }
   }
   /* Button styling */
   button {
-    width: 100px; /* Increased width for a more balanced layout */
-    height: 85px; /* Increased height for vertical space */
-    font-size: 24px; /* Larger font size for readability */
-    margin: 8px; /* Additional margin for spacing */
+    width: 130px; /* Further increased width */
+    height: 90px; /* Increased height */
+    font-size: 28px; /* Increased font size */
+    margin: 10px; /* Extra margin for spacing */
     border-radius: 12px;
     border: none;
     cursor: pointer;
@@ -68,7 +68,7 @@ courses: { week: {week: 8} }
   }
   .theme-toggle {
     margin-top: 20px;
-    padding: 14px 30px;
+    padding: 16px 35px;
     background-color: #333;
     color: #fff;
     border-radius: 5px;
