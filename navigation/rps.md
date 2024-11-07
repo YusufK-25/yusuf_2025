@@ -1,10 +1,3 @@
----
-layout: page
-title: RPS
-description: A full-featured rock paper scissors game
-permalink: /rpgs/
-courses: { week: {week: 8} }
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +18,8 @@ courses: { week: {week: 8} }
 
         #game-container {
             text-align: center;
-            width: 320px;
-            padding: 25px;
+            width: 400px; /* Increased width */
+            padding: 30px; /* Increased padding */
             border-radius: 12px;
             background: #ffffff;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -34,7 +27,7 @@ courses: { week: {week: 8} }
 
         h2 {
             font-size: 28px;
-            color: #333;
+            color: #005bb5; /* New color for better contrast */
             margin-bottom: 25px;
         }
 
@@ -46,7 +39,7 @@ courses: { week: {week: 8} }
 
         /* Button styling */
         .choice {
-            width: 80px;
+            width: 100px; /* Increased width for images */
             padding: 15px;
             font-size: 18px;
             color: #ffffff;
@@ -65,8 +58,8 @@ courses: { week: {week: 8} }
         }
 
         .choice img {
-            width: 24px;
-            height: 24px;
+            width: 28px; /* Increased icon size */
+            height: 28px;
             margin-right: 8px;
         }
 
