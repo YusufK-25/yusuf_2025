@@ -10,7 +10,7 @@ courses: { week: {week: 8} }
 <title>Enhanced Calculator</title>
 
 <style>
-  /* Page and calculator container styling */
+  /* General page styling */
   body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -18,31 +18,34 @@ courses: { week: {week: 8} }
     margin: 0;
     padding: 0;
   }
+  /* Calculator container styling */
   #calculator {
-    width: 400px;
+    width: 500px; /* Increased width for a wider layout */
     margin: 50px auto;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    padding: 20px;
+    padding: 30px; /* Additional padding for spacing */
   }
+  /* Display screen styling */
   #display {
     width: 100%;
-    height: 60px;
-    font-size: 26px;
+    height: 80px; /* Increased height */
+    font-size: 32px; /* Larger font for readability */
     text-align: right;
     padding: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
   }
+  /* Button styling */
   button {
-    width: 80px;
-    height: 70px;
-    font-size: 22px;
-    margin: 6px;
-    border-radius: 10px;
+    width: 100px; /* Increased width for a more balanced layout */
+    height: 85px; /* Increased height for vertical space */
+    font-size: 24px; /* Larger font size for readability */
+    margin: 8px; /* Additional margin for spacing */
+    border-radius: 12px;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
@@ -65,7 +68,7 @@ courses: { week: {week: 8} }
   }
   .theme-toggle {
     margin-top: 20px;
-    padding: 12px 25px;
+    padding: 14px 30px;
     background-color: #333;
     color: #fff;
     border-radius: 5px;

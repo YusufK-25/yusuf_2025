@@ -5,7 +5,6 @@ description: A fully functioning Rock Paper Scissors Game
 permalink: /rps/
 courses: { week: {week: 8} }
 ---
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
