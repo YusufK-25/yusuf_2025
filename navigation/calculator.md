@@ -68,11 +68,14 @@ courses: { week: {week: 8} }
   }
   .theme-toggle {
     margin-top: 20px;
-    padding: 18px 40px;
+    padding: 14px 30px; /* Reduced padding for better fit */
+    font-size: 24px; /* Adjusted font size */
     background-color: #333;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 8px;
+    width: 250px; /* Increased width to fit the text */
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   /* Dark mode styling */
   .dark-mode {
