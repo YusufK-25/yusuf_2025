@@ -1,9 +1,3 @@
----
-layout: page
-title: RPS Game
-Description: Rock Paper Scissors Game
-permalink: /rps/
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,59 +5,69 @@ permalink: /rps/
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <style>
-        /* General layout styling */
+        /* General styling for body */
         body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f3f4f6;
+            background: linear-gradient(135deg, #a2d9ff, #0078d7);
             margin: 0;
         }
 
         #game-container {
             text-align: center;
-            max-width: 350px;
-            padding: 20px;
-            border-radius: 10px;
+            width: 320px;
+            padding: 25px;
+            border-radius: 12px;
             background: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         h2 {
-            font-size: 24px;
+            font-size: 28px;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .choices {
             display: flex;
             justify-content: space-around;
-            margin: 20px 0;
+            margin-bottom: 25px;
         }
 
-        /* Choice button styling */
+        /* Button styling */
         .choice {
-            padding: 12px 20px;
+            width: 80px;
+            padding: 15px;
             font-size: 18px;
             color: #ffffff;
-            background-color: #4CAF50;
+            background-color: #0078d7;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .choice:hover {
-            background-color: #45a049;
+            background-color: #005bb5;
         }
 
-        /* Result and Score Styling */
+        .choice img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        /* Result and score display */
         #result {
-            font-size: 18px;
+            font-size: 20px;
             color: #333;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         #score {
@@ -78,11 +82,20 @@ permalink: /rps/
 <div id="game-container">
     <h2>Rock Paper Scissors</h2>
     
-    <!-- Choices Section -->
+    <!-- Choices Section with Image Placeholders -->
     <div class="choices">
-        <button class="choice" onclick="playGame('rock')">Rock</button>
-        <button class="choice" onclick="playGame('paper')">Paper</button>
-        <button class="choice" onclick="playGame('scissors')">Scissors</button>
+        <button class="choice" onclick="playGame('rock')">
+            <!-- Rock Icon Placeholder -->
+            <img src="https://img.icons8.com/color/48/000000/rock.png" alt="Rock"> Rock
+        </button>
+        <button class="choice" onclick="playGame('paper')">
+            <!-- Paper Icon Placeholder -->
+            <img src="https://img.icons8.com/color/48/000000/paper.png" alt="Paper"> Paper
+        </button>
+        <button class="choice" onclick="playGame('scissors')">
+            <!-- Scissors Icon Placeholder -->
+            <img src="https://img.icons8.com/color/48/000000/scissors.png" alt="Scissors"> Scissors
+        </button>
     </div>
 
     <!-- Result and Score Section -->
@@ -96,11 +109,24 @@ permalink: /rps/
     let computerScore = 0;
 
     function playGame(userChoice) {
-        // Define choices and randomly select computer choice
+        // Choices and winning combinations
         const choices = ['rock', 'paper', 'scissors'];
-        const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        
+        // Determine computer's choice with a bias towards winning
+        let computerChoice;
+        const randomChance = Math.random();
 
-        // Determine winner and prepare the response
+        if (randomChance < 0.6) {
+            // 60% chance computer picks a winning move
+            if (userChoice === 'rock') computerChoice = 'paper';
+            else if (userChoice === 'paper') computerChoice = 'scissors';
+            else if (userChoice === 'scissors') computerChoice = 'rock';
+        } else {
+            // 40% chance computer picks randomly
+            computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        // Determine the result
         let roundResult = '';
         if (userChoice === computerChoice) {
             roundResult = "It's a tie!";
