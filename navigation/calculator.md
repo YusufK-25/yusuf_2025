@@ -1,3 +1,10 @@
+---
+layout: page
+title: Calculator
+description: A full-featured calculator with enhanced styling and functionality
+permalink: /calculator/
+courses: { week: {week: 8} }
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -193,4 +200,4 @@
     });
   </script>
 </body>
-</html>mak
+</html>
