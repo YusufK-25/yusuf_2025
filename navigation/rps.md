@@ -1,3 +1,10 @@
+---
+layout: page
+title: RPS
+description: A full-featured rock paper scissors game
+permalink: /rpgs/
+courses: { week: {week: 8} }
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
