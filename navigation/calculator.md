@@ -20,32 +20,33 @@ courses: { week: {week: 8} }
   }
   /* Calculator container styling */
   #calculator {
-    width: 1000px; /* Ultra-wide width */
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Max width to keep it compact */
     margin: 50px auto;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    padding: 30px;
+    padding: 20px;
   }
   /* Display screen styling */
   #display {
     width: 100%;
-    height: 100px; /* Taller display for better readability */
-    font-size: 36px; /* Larger font */
+    height: 60px; /* Smaller display */
+    font-size: 24px; /* Reduced font */
     text-align: right;
-    padding: 20px;
-    margin-bottom: 30px;
+    padding: 10px;
+    margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
   }
   /* Button styling */
   button {
-    width: 180px; /* Significantly wider buttons */
-    height: 100px; /* Increased height */
-    font-size: 30px; /* Larger font size */
-    margin: 10px;
-    border-radius: 12px;
+    width: 70px; /* Narrower buttons */
+    height: 60px; /* Reduced height */
+    font-size: 18px; /* Smaller font size */
+    margin: 5px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
@@ -68,12 +69,12 @@ courses: { week: {week: 8} }
   }
   .theme-toggle {
     margin-top: 20px;
-    padding: 14px 30px; /* Reduced padding for better fit */
-    font-size: 24px; /* Adjusted font size */
+    padding: 10px 20px; /* Compact padding */
+    font-size: 18px; /* Adjusted font size */
     background-color: #333;
     color: #fff;
     border-radius: 8px;
-    width: 250px; /* Increased width to fit the text */
+    width: auto; /* Fit the text */
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
