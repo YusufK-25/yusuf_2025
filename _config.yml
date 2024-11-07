@@ -21,4 +21,6 @@ header_pages:
   - navigation/search.md
   - navigation/about.md
   - navigation/tool1.md
+  - navigation/calculator.md
+  - navigation/rpg3x.md
   - README4YML.md
