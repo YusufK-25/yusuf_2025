@@ -5,9 +5,7 @@ description: A full-featured calculator with enhanced styling and functionality
 permalink: /calculator/
 courses: { week: {week: 8} }
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enhanced Calculator</title>
@@ -93,8 +91,6 @@ courses: { week: {week: 8} }
       color: #fff;
     }
   </style>
-</head>
-<body>
   <div id="calculator">
     <!-- Calculator display -->
     <input type="text" id="display" disabled>
@@ -199,5 +195,3 @@ courses: { week: {week: 8} }
       }
     });
   </script>
-</body>
-</html>
