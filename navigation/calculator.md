@@ -5,193 +5,108 @@ description: A full-featured calculator with enhanced styling and functionality
 permalink: /calculator/
 courses: { week: {week: 8} }
 ---
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enhanced Calculator</title>
+<title>Basic Calculator</title>
 
 <style>
-  /* General page styling */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
-  /* Calculator container styling */
-  #calculator {
-    width: 90%; /* Responsive width */
-    max-width: 400px; /* Max width to keep it compact */
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-  }
-  /* Display screen styling */
-  #display {
-    width: 100%;
-    height: 60px; /* Smaller display */
-    font-size: 24px; /* Reduced font */
-    text-align: right;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  /* Button styling */
-  button {
-    width: 70px; /* Narrower buttons */
-    height: 60px; /* Reduced height */
-    font-size: 18px; /* Smaller font size */
-    margin: 5px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  button:hover {
-    background-color: #ddd;
-  }
-  button:active {
-    transform: scale(0.98);
-  }
-  /* Specialized button styles */
-  .operation-button {
-    background-color: #ff9933;
-    color: #fff;
-  }
-  .clear-button {
-    background-color: #cc0000;
-    color: #fff;
-  }
-  .theme-toggle {
-    margin-top: 20px;
-    padding: 10px 20px; /* Compact padding */
-    font-size: 18px; /* Adjusted font size */
-    background-color: #333;
-    color: #fff;
-    border-radius: 8px;
-    width: auto; /* Fit the text */
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  /* Dark mode styling */
-  .dark-mode {
-    background-color: #333;
-    color: #fff;
-  }
-  .dark-mode #calculator {
-    background-color: #444;
-  }
-  .dark-mode button {
-    background-color: #666;
-    color: #fff;
-  }
+    /* Basic page styling */
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Calculator container styling */
+    #calculator {
+        width: 300px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    /* Display screen styling */
+    #display {
+        width: 100%;
+        height: 50px;
+        font-size: 24px;
+        text-align: right;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    /* Button styling */
+    button {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    /* Operation button styling */
+    .operation {
+        background-color: #ff9800;
+        color: white;
+    }
 </style>
 
 <div id="calculator">
-  <!-- Display -->
-  <input type="text" id="display" disabled>
+    <!-- Display area for the calculator -->
+    <input type="text" id="display" disabled>
 
-  <!-- Memory and operation buttons -->
-  <div>
-    <button onclick="clearMemory()" class="clear-button">MC</button>
-    <button onclick="recallMemory()">MR</button>
-    <button onclick="addToMemory()">M+</button>
-    <button onclick="subtractFromMemory()">M-</button>
-  </div>
-
-  <!-- Number and basic operation buttons -->
-  <div>
-    <button onclick="appendToDisplay('1')">1</button>
-    <button onclick="appendToDisplay('2')">2</button>
-    <button onclick="appendToDisplay('3')">3</button>
-    <button onclick="appendToDisplay('+')" class="operation-button">+</button>
-  </div>
-  <div>
-    <button onclick="appendToDisplay('4')">4</button>
-    <button onclick="appendToDisplay('5')">5</button>
-    <button onclick="appendToDisplay('6')">6</button>
-    <button onclick="appendToDisplay('-')" class="operation-button">-</button>
-  </div>
-  <div>
-    <button onclick="appendToDisplay('7')">7</button>
-    <button onclick="appendToDisplay('8')">8</button>
-    <button onclick="appendToDisplay('9')">9</button>
-    <button onclick="appendToDisplay('*')" class="operation-button">*</button>
-  </div>
-  <div>
-    <button onclick="appendToDisplay('0')">0</button>
-    <button onclick="appendToDisplay('%')">%</button>
-    <button onclick="clearDisplay()" class="clear-button">C</button>
-    <button onclick="appendToDisplay('/')" class="operation-button">/</button>
-  </div>
-  <div>
-    <button onclick="calculateResult()" class="operation-button">=</button>
-  </div>
+    <!-- Buttons for the calculator -->
+    <div>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('+')" class="operation">+</button>
+    </div>
+    <div>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')" class="operation">-</button>
+    </div>
+    <div>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('*')" class="operation">*</button>
+    </div>
+    <div>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calculateResult()" class="operation">=</button>
+        <button onclick="appendToDisplay('/')" class="operation">/</button>
+    </div>
 </div>
 
-<!-- Theme toggle button -->
-<button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
-
+<!-- JavaScript functionality -->
 <script>
-  const display = document.getElementById('display');
-  let memory = 0;
-
-  function appendToDisplay(value) {
-    display.value += value;
-  }
-
-  function clearDisplay() {
-    display.value = '';
-  }
-
-  function calculateResult() {
-    try {
-      display.value = eval(display.value.replace('^', '**'));
-    } catch {
-      display.value = 'Error';
+    // Function to append numbers or operators to the display
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
     }
-  }
 
-  function toggleTheme() {
-    document.body.classList.toggle('dark-mode');
-    document.querySelector('.theme-toggle').innerText = 
-      document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
-  }
-
-  function clearMemory() {
-    memory = 0;
-  }
-
-  function recallMemory() {
-    display.value += memory;
-  }
-
-  function addToMemory() {
-    memory += parseFloat(display.value) || 0;
-    clearDisplay();
-  }
-
-  function subtractFromMemory() {
-    memory -= parseFloat(display.value) || 0;
-    clearDisplay();
-  }
-
-  /* Keyboard support */
-  document.addEventListener('keydown', (event) => {
-    const key = event.key;
-    if (!isNaN(key) || "+-*/%^".includes(key)) {
-      appendToDisplay(key);
-    } else if (key === 'Enter') {
-      calculateResult();
-    } else if (key === 'Backspace') {
-      display.value = display.value.slice(0, -1);
-    } else if (key.toLowerCase() === 'c') {
-      clearDisplay();
+    // Function to clear the display
+    function clearDisplay() {
+        document.getElementById('display').value = '';
     }
-  });
+
+    // Function to calculate the result of the expression
+    function calculateResult() {
+        try {
+            // Evaluate the expression and display the result
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch {
+            // If an error occurs (e.g., invalid expression), show 'Error'
+            document.getElementById('display').value = 'Error';
+        }
+    }
 </script>
