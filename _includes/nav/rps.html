@@ -5,37 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <style>
-        /* Centering and basic styling for the game */
+        /* Centering and styling */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #e0f7fa;
             font-family: Arial, sans-serif;
         }
 
-        /* Container styling */
+        /* Game container styling */
         #game-container {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             background-color: #ffffff;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 2px solid #0078d7;
+            width: 320px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 3px solid #0078d7;
         }
 
         /* Header styling */
         h1 {
             color: #0078d7;
-            font-size: 24px;
+            font-size: 26px;
+            margin-bottom: 15px;
         }
 
-        /* Button styling for choices and reset */
+        /* Button styling for choices */
         .choice-btn, .reset-btn {
-            width: 80px;
+            width: 90px;
             padding: 10px;
             font-size: 16px;
             margin: 5px;
@@ -44,19 +45,47 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.1s;
         }
 
-        /* Hover effect for buttons */
+        /* Button hover effect */
         .choice-btn:hover, .reset-btn:hover {
             background-color: #005bb5;
+            transform: scale(1.05);
         }
 
         /* Result and score styling */
         #result, #score {
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 18px;
             color: #333;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        /* Animation for result text */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Styling for last computer choice */
+        .computer-choice {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        /* Reset button styling */
+        .reset-btn {
+            background-color: #ff5252;
+        }
+
+        .reset-btn:hover {
+            background-color: #d32f2f;
         }
     </style>
 </head>
@@ -83,7 +112,6 @@
 </div>
 
 <script>
-    // Initialize scores
     let userScore = 0;
     let computerScore = 0;
 
@@ -92,20 +120,25 @@
         const choices = ['rock', 'paper', 'scissors'];
         const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-        // Game outcomes
         const outcomes = {
             rock: { rock: "tie", paper: "lose", scissors: "win" },
             paper: { rock: "win", paper: "tie", scissors: "lose" },
             scissors: { rock: "lose", paper: "win", scissors: "tie" }
         };
 
-        // Determine result and update scores
         const result = outcomes[userChoice][computerChoice];
+
         if (result === "win") userScore++;
         else if (result === "lose") computerScore++;
 
-        // Update the result and score display
-        document.getElementById('result').textContent = `Computer picked ${computerChoice}. You ${result}!`;
+        // Animate and update the result display
+        const resultElement = document.getElementById('result');
+        resultElement.textContent = `Computer picked ${computerChoice}. You ${result}!`;
+        resultElement.classList.remove("fade-in");  // reset animation
+        void resultElement.offsetWidth;  // trigger reflow
+        resultElement.classList.add("fade-in");
+
+        // Update score display
         document.getElementById('score').textContent = `Score: You - ${userScore} | Computer - ${computerScore}`;
     }
 
@@ -113,8 +146,14 @@
     function resetGame() {
         userScore = 0;
         computerScore = 0;
-        document.getElementById('result').textContent = "Choose your move to start playing!";
-        document.getElementById('score').textContent = "Score: You - 0 | Computer - 0";
+
+        // Reset displayed text with animation
+        const resultElement = document.getElementById('result');
+        const scoreElement = document.getElementById('score');
+
+        resultElement.textContent = "Choose your move to start playing!";
+        resultElement.classList.remove("fade-in");
+        scoreElement.textContent = "Score: You - 0 | Computer - 0";
     }
 </script>
 
