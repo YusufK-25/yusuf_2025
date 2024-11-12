@@ -35,7 +35,7 @@ class GameLevelWater {
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
         INIT_POSITION: { x: 0, y: height - (height/TURTLE_SCALE_FACTOR) }, 
-        pixels: {height: 128, width: 190},
+        pixels: {height: 250, width: 190},
         orientation: {rows: 4, columns: 6 },
         down: {row: 4, start: 0, columns: 6 },
         left: {row: 5, start: 0, columns: 6 },
