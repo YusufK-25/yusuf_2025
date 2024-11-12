@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +14,14 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Game container styling */
+        /* Responsive game container styling */
         #game-container {
             text-align: center;
             padding: 30px;
             border-radius: 10px;
             background-color: #ffffff;
-            width: 320px;
+            max-width: 500px;
+            width: 100%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             border: 3px solid #0078d7;
         }
@@ -31,12 +30,12 @@
         h1 {
             color: #0078d7;
             font-size: 26px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         /* Button styling for choices */
         .choice-btn, .reset-btn {
-            width: 90px;
+            width: 100px;
             padding: 10px;
             font-size: 16px;
             margin: 5px;
@@ -48,7 +47,7 @@
             transition: background-color 0.3s, transform 0.1s;
         }
 
-        /* Button hover effect */
+        /* Button hover and active effects */
         .choice-btn:hover, .reset-btn:hover {
             background-color: #005bb5;
             transform: scale(1.05);
@@ -59,21 +58,9 @@
             margin-top: 15px;
             font-size: 18px;
             color: #333;
-            transition: opacity 0.5s ease;
-            opacity: 1;
         }
 
-        /* Animation for result text */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* Styling for last computer choice */
+        /* Styling for computer choice text */
         .computer-choice {
             font-weight: bold;
             color: #d32f2f;
@@ -86,6 +73,16 @@
 
         .reset-btn:hover {
             background-color: #d32f2f;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -119,43 +116,40 @@
     function playGame(userChoice) {
         const choices = ['rock', 'paper', 'scissors'];
         const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        const result = getResult(userChoice, computerChoice);
 
+        if (result === "win") userScore++;
+        else if (result === "lose") computerScore++;
+
+        updateResult(`Computer picked ${computerChoice}. You ${result}!`);
+        document.getElementById('score').textContent = `Score: You - ${userScore} | Computer - ${computerScore}`;
+    }
+
+    // Determine the game result
+    function getResult(userChoice, computerChoice) {
         const outcomes = {
             rock: { rock: "tie", paper: "lose", scissors: "win" },
             paper: { rock: "win", paper: "tie", scissors: "lose" },
             scissors: { rock: "lose", paper: "win", scissors: "tie" }
         };
+        return outcomes[userChoice][computerChoice];
+    }
 
-        const result = outcomes[userChoice][computerChoice];
-
-        if (result === "win") userScore++;
-        else if (result === "lose") computerScore++;
-
-        // Animate and update the result display
+    // Update and animate the result text
+    function updateResult(text) {
         const resultElement = document.getElementById('result');
-        resultElement.textContent = `Computer picked ${computerChoice}. You ${result}!`;
-        resultElement.classList.remove("fade-in");  // reset animation
-        void resultElement.offsetWidth;  // trigger reflow
+        resultElement.textContent = text;
+        resultElement.classList.remove("fade-in");
+        void resultElement.offsetWidth;  // trigger reflow for animation
         resultElement.classList.add("fade-in");
-
-        // Update score display
-        document.getElementById('score').textContent = `Score: You - ${userScore} | Computer - ${computerScore}`;
     }
 
     // Reset the game to initial state
     function resetGame() {
         userScore = 0;
         computerScore = 0;
-
-        // Reset displayed text with animation
-        const resultElement = document.getElementById('result');
-        const scoreElement = document.getElementById('score');
-
-        resultElement.textContent = "Choose your move to start playing!";
-        resultElement.classList.remove("fade-in");
-        scoreElement.textContent = "Score: You - 0 | Computer - 0";
+        updateResult("Choose your move to start playing!");
+        document.getElementById('score').textContent = "Score: You - 0 | Computer - 0";
     }
 </script>
-
 </body>
-</html>
