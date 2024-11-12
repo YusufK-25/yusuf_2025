@@ -253,7 +253,6 @@ hide: true
 </script>
 
 ---
-
 <!-- Apply glow effect to "Home" heading -->
 <h1 class="glow">Home</h1>
 
@@ -265,130 +264,168 @@ hide: true
 
 <br>
 
-### Game Progress
+<style>
+/* General styling for sections */
+section {
+    margin-bottom: 40px;
+}
 
-> Here is my progress through game coding, click to see these online.
+/* General button styling */
+.styled-button {
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-<div style="display: flex; flex-wrap: wrap; gap: 15px;">
-  <a href="{{site.baseurl}}/snake" style="text-decoration: none;">
-      <div class="styled-button button-snake">
-          Snake Game
-      </div>
-  </a>
-  <a href="{{site.baseurl}}/rpg0x" style="text-decoration: none;">
-      <div class="styled-button button-turtle-v0">
-          Turtle v0.0
-      </div>
-  </a>
-  <a href="{{site.baseurl}}/rpg1x" style="text-decoration: none;">
-      <div class="styled-button button-turtle-v1">
-          Turtle v0.1
-      </div>
-  </a>
-  <a href="{{site.baseurl}}/rpg" style="text-decoration: none;">
-      <div class="styled-button button-turtle-v2">
-          Turtle v0.2
-      </div>
-  </a>
-  <a href="{{site.baseurl}}/rpg3x" style="text-decoration: none;">
-      <div class="styled-button button-turtle-v2">
-          Turtle v0.3
-      </div>
-  </a>
-</div>
+/* Button hover effect */
+.styled-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
 
-<br>
+/* Unique colors for each button */
+.button-snake { background-color: #FF5733; } /* Vibrant Orange */
+.button-turtle-v0 { background-color: #33A1FF; } /* Sky Blue */
+.button-turtle-v1 { background-color: #8E44AD; } /* Purple */
+.button-turtle-v2 { background-color: #28B463; } /* Green */
 
-### College Articulation
+/* College Articulation Buttons */
+.button-variables { background-color: #E74C3C; } /* Red */
+.button-data-types { background-color: #3498DB; } /* Blue */
+.button-for-loops { background-color: #F1C40F; } /* Yellow */
 
-> Here is my preparation for college topics, click to review my blogs.
+/* Homework Buttons */
+.button-homework { background-color: #7D3C98; } /* Dark Purple */
+.button-conditional-p1 { background-color: #3498DB; } /* Blue */
+.button-conditional-p2 { background-color: #1ABC9C; } /* Turquoise */
+.button-conditional-p3 { background-color: #E67E22; } /* Orange */
+.button-nested-conditionals { background-color: #D35400; } /* Dark Orange */
 
-<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
-        <div class="styled-button button-variables">
-            Variables I/O
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/data-types/" style="text-decoration: none;">
-        <div class="styled-button button-data-types">
-            Data Types
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
-        <div class="styled-button button-for-loops">
-            Variables
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/for-loops" style="text-decoration: none;">
-        <div class="styled-button button-for-loops">
-            For loops and sprites
-        </div>
-    </a>
-</div>
+/* Section title styling */
+section h2 {
+    font-size: 1.5rem;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
 
-### Student-Taught Lessons & Personal Lessons
+/* Section description styling */
+.section-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+}
+</style>
 
-> Here are some student-taught lessons, including mine, to demonstrate learning.
+<section>
+    <h2>Game Progress</h2>
+    <p class="section-description">Here is my progress through game coding, click to see these online.</p>
 
-<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
-        <div class="styled-button button-variables">
-            Variables I/O
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/data-types/" style="text-decoration: none;">
-        <div class="styled-button button-data-types">
-            Data Types
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
-        <div class="styled-button button-for-loops">
-            Variables
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/csse/javascript/fundamentals/for-loops" style="text-decoration: none;">
-        <div class="styled-button button-for-loops">
-            For loops and sprites
-        </div>
-    </a>
-</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+        <a href="{{site.baseurl}}/snake" style="text-decoration: none;">
+            <div class="styled-button button-snake">
+                Snake Game
+            </div>
+        </a>
+        <a href="{{site.baseurl}}/rpg0x" style="text-decoration: none;">
+            <div class="styled-button button-turtle-v0">
+                Turtle v0.0
+            </div>
+        </a>
+        <a href="{{site.baseurl}}/rpg1x" style="text-decoration: none;">
+            <div class="styled-button button-turtle-v1">
+                Turtle v0.1
+            </div>
+        </a>
+        <a href="{{site.baseurl}}/rpg" style="text-decoration: none;">
+            <div class="styled-button button-turtle-v2">
+                Turtle v0.2
+            </div>
+        </a>
+        <a href="{{site.baseurl}}/rpg3x" style="text-decoration: none;">
+            <div class="styled-button button-turtle-v2">
+                Turtle v0.3
+            </div>
+        </a>
+    </div>
+</section>
 
-### Homework Assignments
+<section>
+    <h2>College Articulation</h2>
+    <p class="section-description">Here is my preparation for college topics, click to review my blogs.</p>
 
-> Below are the links to homework assignments, click to view each one.
+    <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+        <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
+            <div class="styled-button button-variables">
+                Variables I/O
+            </div>
+        </a>
+        <a href="{{site.baseurl}}/csse/javascript/fundamentals/data-types/" style="text-decoration: none;">
+            <div class="styled-button button-data-types">
+                Data Types
+            </div>
+        </a>
+        <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
+            <div class="styled-button button-for-loops">
+                Variables
+            </div>
+        </a>
+        <a href="{{site.baseurl}}/csse/javascript/fundamentals/for-loops" style="text-decoration: none;">
+            <div class="styled-button button-for-loops">
+                For loops and sprites
+            </div>
+        </a>
+    </div>
+</section>
 
-<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
-    <!-- Homework: Data Abstraction -->
-    <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/data-abstraction-homework" style="text-decoration: none;">
-        <div class="styled-button button-homework">
-            Data Abstraction Homework
-        </div>
-    </a>
-    <!-- Homework: Classes -->
-    <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/classes/hw/" style="text-decoration: none;">
-        <div class="styled-button button-homework">
-            Classes Homework
-        </div>
-    </a>
-    <!-- Homework: Math Homework -->
-    <a href="https://yusufk-25.github.io/yusuf_2025/javascript/2024/10/31/mathhomework_IPYNB_2_.html" style="text-decoration: none;">
-        <div class="styled-button button-homework">
-            Math Homework
-        </div>
-    </a>
-    <!-- Placeholder for Nested Conditionals Homework -->
-    <a href="#" style="text-decoration: none;">
-        <div class="styled-button button-homework">
-            Nested Conditionals Homework (Coming Soon)
-        </div>
-    </a>
-    <!-- Placeholder for Normal Conditionals Lesson -->
-    <a href="#" style="text-decoration: none;">
-        <div class="styled-button button-homework">
-            Conditionals Lesson (Coming Soon)
-        </div>
-    </a>
-</div>
+<section>
+    <h2>Homework Assignments</h2>
+    <p class="section-description">Below are the links to homework assignments, click to view each one.</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+        <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/data-abstraction-homework" style="text-decoration: none;">
+            <div class="styled-button button-homework">
+                Data Abstraction Homework
+            </div>
+        </a>
+        <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/classes/hw/" style="text-decoration: none;">
+            <div class="styled-button button-homework">
+                Classes Homework
+            </div>
+        </a>
+        <a href="https://yusufk-25.github.io/yusuf_2025/javascript/2024/10/31/mathhomework_IPYNB_2_.html" style="text-decoration: none;">
+            <div class="styled-button button-homework">
+                Math Homework
+            </div>
+        </a>
+        <a href="https://yusufk-25.github.io/yusuf_2025/2024/10/26/nested_conditionals_IPYNB_2_.html" style="text-decoration: none;">
+            <div class="styled-button button-nested-conditionals">
+                Nested Conditionals Homework
+            </div>
+        </a>
+        <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/conditional-statements/p1/" style="text-decoration: none;">
+            <div class="styled-button button-conditional-p1">
+                Conditionals Homework - Part 1
+            </div>
+        </a>
+        <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/conditionals_part2/" style="text-decoration: none;">
+            <div class="styled-button button-conditional-p2">
+                Conditionals Homework - Part 2
+            </div>
+        </a>
+        <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/conditionals/p3/" style="text-decoration: none;">
+            <div class="styled-button button-conditional-p3">
+                Conditionals Homework - Part 3
+            </div>
+        </a>
+    </div>
+</section>
+
 
 <script src="https://utteranc.es/client.js"
         repo="YusufK-25/yusuf_2025"
