@@ -4,7 +4,6 @@ title: RPG
 permalink: /rpg/
 ---
 
-<canvas id='gameCanvas'></canvas>
 
 <div id="indicator" style="display: none;">Music is Playing!</div>
 
@@ -36,7 +35,7 @@ permalink: /rpg/
 }
 
 </style>
-
+<canvas id='gameCanvas'></canvas>
 <div id="custom-alert" class="custom-alert">
     <button onclick="closeCustomAlert()" id="custom-alert-message"></button>
 </div>
@@ -46,32 +45,4 @@ permalink: /rpg/
     const path = "{{site.baseurl}}";
     // Start game engine
     GameControl.start(path);
-    import GameControl from '{{site.baseurl}}/assets/js/rpg2x/GameControl.js';
-    // Background data
-    const image_src = "{{site.baseurl}}/images/rpg/water.png";
-    const image_data = {
-        pixels: {height: 580, width: 1038}
-    };
-    const image = {src: image_src, data: image_data};
-    // Sprite data
-    const sprite_src = "{{site.baseurl}}/images/rpg/harry.png";
-    const sprite_data = {
-        SCALE_FACTOR: 10,
-        STEP_FACTOR: 500,
-        ANIMATION_RATE: 50,
-        pixels: {height: 128, width: 190},
-        orientation: {rows: 4, columns: 6 },
-        down: {row: 4, start: 0, columns: 6 },
-        left: {row: 5, start: 0, columns: 6 },
-        right: {row: 6, start: 0, columns: 6 },
-        up: {row: 7, start: 0, columns: 6 },
-    };
-    const sprite = {src: sprite_src, data: sprite_data};
-    // Assets for game
-    //const assets = {}
-    //const assets = {image: image}
-    //const assets = {sprite: sprite}
-    const assets = {image: image, sprite: sprite}
-    // Start game engine
-    GameControl.start(assets);
 </script>
