@@ -3,47 +3,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    
+    <!-- Basic CSS to center the game, style buttons, and make it visually organized -->
+    <style>
+        /* Center the game in the middle of the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Container for the game with some padding and a border */
+        #game-container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #0078d7;
+            border-radius: 10px;
+            background-color: #ffffff;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Title styling */
+        h1 {
+            color: #0078d7;
+            font-size: 24px;
+        }
+
+        /* Button styling to make it clearer and consistent */
+        button {
+            width: 80px;
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+            color: #ffffff;
+            background-color: #0078d7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        /* Styling for result and score messages */
+        #result, #score {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
+<div id="game-container">
     <h1>Rock Paper Scissors Game</h1>
-    
+
+    <!-- Button section for user choices -->
     <div>
         <button onclick="playGame('rock')">Rock</button>
         <button onclick="playGame('paper')">Paper</button>
         <button onclick="playGame('scissors')">Scissors</button>
     </div>
 
+    <!-- Result and score section -->
     <p id="result">Make a choice to start playing!</p>
     <p id="score">Score: You - 0 | Computer - 0</p>
+</div>
 
-    <script>
-        let userScore = 0;
-        let computerScore = 0;
+<script>
+    // Initialize scores
+    let userScore = 0;
+    let computerScore = 0;
 
-        function playGame(userChoice) {
-            const choices = ['rock', 'paper', 'scissors'];
-            let computerChoice = choices[Math.floor(Math.random() * 3)];
+    function playGame(userChoice) {
+        const choices = ['rock', 'paper', 'scissors'];
+        let computerChoice = choices[Math.floor(Math.random() * 3)];
 
-            let result = '';
-            if (userChoice === computerChoice) {
-                result = "It's a tie!";
-            } else if (
-                (userChoice === 'rock' && computerChoice === 'scissors') ||
-                (userChoice === 'scissors' && computerChoice === 'paper') ||
-                (userChoice === 'paper' && computerChoice === 'rock')
-            ) {
-                result = "You win!";
-                userScore++;
-            } else {
-                result = "You lose!";
-                computerScore++;
-            }
-
-            document.getElementById('result').textContent = `Computer picked ${computerChoice}. ${result}`;
-            document.getElementById('score').textContent = `Score: You - ${userScore} | Computer - ${computerScore}`;
+        // Determine the result of the game round
+        let result = '';
+        if (userChoice === computerChoice) {
+            result = "It's a tie!";
+        } else if (
+            (userChoice === 'rock' && computerChoice === 'scissors') ||
+            (userChoice === 'scissors' && computerChoice === 'paper') ||
+            (userChoice === 'paper' && computerChoice === 'rock')
+        ) {
+            result = "You win!";
+            userScore++;
+        } else {
+            result = "You lose!";
+            computerScore++;
         }
-    </script>
+
+        // Display the result of the round and update the score
+        document.getElementById('result').textContent = `Computer picked ${computerChoice}. ${result}`;
+        document.getElementById('score').textContent = `Score: You - ${userScore} | Computer - ${computerScore}`;
+    }
+</script>
 
 </body>
 </html>
