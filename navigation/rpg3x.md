@@ -1,7 +1,7 @@
 ---
 layout: base
 title: RPG v0.3
-permalink: /rpg/latest
+permalink: /rpg/3x/
 ---
 
 <style>
