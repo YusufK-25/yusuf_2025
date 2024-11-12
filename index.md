@@ -290,7 +290,7 @@ hide: true
           Turtle v0.2
       </div>
   </a>
-  <a href="{{site.baseurl}}/3x" style="text-decoration: none;">
+  <a href="{{site.baseurl}}/rpg3x" style="text-decoration: none;">
       <div class="styled-button button-turtle-v2">
           Turtle v0.3
       </div>

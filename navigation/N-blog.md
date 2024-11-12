@@ -14,14 +14,14 @@ permalink: /S123/
 The first sprint was all about building a solid foundation in essential tools and processes for software development. From setting up GitHub Pages to coding in Jupyter Notebooks, and working with Markdown, HTML, and JavaScript, each step helped me gain confidence in organizing, documenting, and sharing my work. These early skills, especially in version control and documentation, will be critical as I move into more complex coding challenges.
 
 #### Key Takeaways
-- **Version Control with GitHub**: Learning GitHub has given me a clear method for managing code changes, which is helping me keep my projects organized.
-- **Markdown Documentation**: Practicing with Markdown helped me create clear, structured documentation—a skill I realize is just as important as the code itself.
+- **Version Control with GitHub**: Learning the basics of GitHub has given me a clear method for managing code changes, which is helping me keep my projects organized.
+- **Markdown Documentation**: Practicing with Markdown helped me create clear, structured documentation—a skill I realize is just as important as the code itself, because I used it to make my lesson fancier.
 - **Intro to Coding Languages**: By working with HTML, JavaScript, and Markdown, I was able to see how each language plays a different role in software development and understand their unique structures and uses.
 
 #### Next Steps
 In the future, I aim to:
-- Streamline my use of **version control** by committing code more strategically, capturing meaningful changes in each update.
-- Continue developing my **documentation skills**, focusing on clarity and organization to make my work easier for others to follow and for myself to revisit.
+- Streamline my use of **version control** by committing code more strategically, capturing meaningful changes in each update. Basically, I'll stop adding unnecesary commit names, and make each commit's name reflect what happened in it.
+- Continue developing my **documentation skills**, focusing on clarity and organization to make my work easier for others to follow and for myself to revisit. (Coming back, if I had done this earlier, I would be a lot better off.)
 
 > **Reflection**: Mastering GitHub and Markdown was challenging, but they are already proving invaluable in organizing my projects. I feel that this early investment in these tools will continue to pay off in the sprints to come.
 
