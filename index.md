@@ -326,7 +326,69 @@ hide: true
     </a>
 </div>
 
-### Student-Taught Lessons & Personal Lesson
+### Student-Taught Lessons & Personal Lessons
+
+> Here are some student-taught lessons, including mine, to demonstrate learning.
+
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
+        <div class="styled-button button-variables">
+            Variables I/O
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/data-types/" style="text-decoration: none;">
+        <div class="styled-button button-data-types">
+            Data Types
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/variables" style="text-decoration: none;">
+        <div class="styled-button button-for-loops">
+            Variables
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/csse/javascript/fundamentals/for-loops" style="text-decoration: none;">
+        <div class="styled-button button-for-loops">
+            For loops and sprites
+        </div>
+    </a>
+</div>
+
+### Homework Assignments
+
+> Below are the links to homework assignments, click to view each one.
+
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+    <!-- Homework: Data Abstraction -->
+    <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/data-abstraction-homework" style="text-decoration: none;">
+        <div class="styled-button button-homework">
+            Data Abstraction Homework
+        </div>
+    </a>
+    <!-- Homework: Classes -->
+    <a href="https://yusufk-25.github.io/yusuf_2025/csse/javascript/fundamentals/classes/hw/" style="text-decoration: none;">
+        <div class="styled-button button-homework">
+            Classes Homework
+        </div>
+    </a>
+    <!-- Homework: Math Homework -->
+    <a href="https://yusufk-25.github.io/yusuf_2025/javascript/2024/10/31/mathhomework_IPYNB_2_.html" style="text-decoration: none;">
+        <div class="styled-button button-homework">
+            Math Homework
+        </div>
+    </a>
+    <!-- Placeholder for Nested Conditionals Homework -->
+    <a href="#" style="text-decoration: none;">
+        <div class="styled-button button-homework">
+            Nested Conditionals Homework (Coming Soon)
+        </div>
+    </a>
+    <!-- Placeholder for Normal Conditionals Lesson -->
+    <a href="#" style="text-decoration: none;">
+        <div class="styled-button button-homework">
+            Conditionals Lesson (Coming Soon)
+        </div>
+    </a>
+</div>
 
 <script src="https://utteranc.es/client.js"
         repo="YusufK-25/yusuf_2025"

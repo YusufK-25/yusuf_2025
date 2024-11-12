@@ -33,8 +33,8 @@
             font-size: 24px;
         }
 
-        /* Button styling for choices */
-        .choice-btn {
+        /* Button styling for choices and reset */
+        .choice-btn, .reset-btn {
             width: 80px;
             padding: 10px;
             font-size: 16px;
@@ -47,7 +47,8 @@
             transition: background-color 0.3s;
         }
 
-        .choice-btn:hover {
+        /* Hover effect for buttons */
+        .choice-btn:hover, .reset-btn:hover {
             background-color: #005bb5;
         }
 
@@ -71,36 +72,49 @@
         <button class="choice-btn" onclick="playGame('scissors')">Scissors</button>
     </div>
 
+    <!-- Reset button to restart the game -->
+    <div>
+        <button class="reset-btn" onclick="resetGame()">Reset</button>
+    </div>
+
     <!-- Result and score display -->
     <p id="result">Choose your move to start playing!</p>
     <p id="score">Score: You - 0 | Computer - 0</p>
 </div>
 
 <script>
-    // Scores tracking
+    // Initialize scores
     let userScore = 0;
     let computerScore = 0;
 
-    // Function to play a round
+    // Play a round of the game
     function playGame(userChoice) {
         const choices = ['rock', 'paper', 'scissors'];
         const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-        // Determine the outcome based on user and computer choices
+        // Game outcomes
         const outcomes = {
             rock: { rock: "tie", paper: "lose", scissors: "win" },
             paper: { rock: "win", paper: "tie", scissors: "lose" },
             scissors: { rock: "lose", paper: "win", scissors: "tie" }
         };
 
+        // Determine result and update scores
         const result = outcomes[userChoice][computerChoice];
-
-        // Update scores and display results
         if (result === "win") userScore++;
         else if (result === "lose") computerScore++;
 
+        // Update the result and score display
         document.getElementById('result').textContent = `Computer picked ${computerChoice}. You ${result}!`;
         document.getElementById('score').textContent = `Score: You - ${userScore} | Computer - ${computerScore}`;
+    }
+
+    // Reset the game to initial state
+    function resetGame() {
+        userScore = 0;
+        computerScore = 0;
+        document.getElementById('result').textContent = "Choose your move to start playing!";
+        document.getElementById('score').textContent = "Score: You - 0 | Computer - 0";
     }
 </script>
 
