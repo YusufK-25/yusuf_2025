@@ -4,9 +4,6 @@ import Background from './Background.js';
 import PlayerFish from './PlayerFish.js';
 import PlayerTurtle from './PlayerTurtle.js';
 import NPC from './NPC.js';
-//import Goomba from './EnemyGoomba.js';
-//import Coin from './Coin.js';
-
 
 class GameLevelWater {
   constructor(path) {
@@ -22,25 +19,26 @@ class GameLevelWater {
     const image_data_water = {
         name: 'water',
         src: image_src_water,
-        pixels: {height: 580, width: 1038}
+        pixels: { height: 580, width: 1038 }
     };
 
-    // Turtle sprite data
+    // Turtle sprite data (using only the black/grey bottom half of harry.png)
     const TURTLE_SCALE_FACTOR = 10;
-    // const sprite_src_turtle = path + "/images/rpg/turtle.png";
-    const sprite_src_turtle = path + "/images/rpg/harry.png";    const sprite_data_turtle = {
+    const sprite_src_turtle = path + "/images/rpg/harry.png";
+    const sprite_data_turtle = {
         name: 'turtle',
         src: sprite_src_turtle,
         SCALE_FACTOR: TURTLE_SCALE_FACTOR,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 0, y: height - (height/TURTLE_SCALE_FACTOR) }, 
-        pixels: {height: 250, width: 190},
-        orientation: {rows: 4, columns: 6 },
-        down: {row: 4, start: 0, columns: 6 },
-        left: {row: 5, start: 0, columns: 6 },
-        right: {row: 6, start: 0, columns: 6 },
-        up: {row:73, start: 0, columns: 6 },
+        INIT_POSITION: { x: 0, y: height - (height / TURTLE_SCALE_FACTOR) },
+        pixels: { height: 128, width: 190 }, // Bottom half: 128 height, keeping full width
+        orientation: { rows: 4, columns: 6 }, // Adjusted to represent only 4 rows in the bottom half
+        down: { row: 0, start: 0, columns: 6 },   // Row 4 (now row 0 of cropped bottom half)
+        left: { row: 1, start: 0, columns: 6 },   // Row 5 (now row 1)
+        right: { row: 2, start: 0, columns: 6 },  // Row 6 (now row 2)
+        up: { row: 3, start: 0, columns: 6 },     // Row 7 (now row 3)
+        offsetY: 128 // NEW: Offset the Y-position to start at the bottom half
     };
 
     // Fish sprite data
@@ -51,13 +49,13 @@ class GameLevelWater {
         SCALE_FACTOR: 16,
         STEP_FACTOR: 400,
         ANIMATION_RATE: 50,
-        pixels: {height: 256, width: 384},
+        pixels: { height: 256, width: 384 },
         INIT_POSITION: { x: 0, y: 0 },
-        orientation: {rows: 8, columns: 12 },
-        down: {row: 0, start: 0, columns: 3 },  // 1st row
-        left: {row: 1, start: 0, columns: 3 },  // 2nd row
-        right: {row: 2, start: 0, columns: 3 }, // 3rd row
-        up: {row: 3, start: 0, columns: 3 },    // 4th row
+        orientation: { rows: 8, columns: 12 },
+        down: { row: 0, start: 0, columns: 3 },
+        left: { row: 1, start: 0, columns: 3 },
+        right: { row: 2, start: 0, columns: 3 },
+        up: { row: 3, start: 0, columns: 3 },
     };
 
     // NPC sprite data
@@ -65,16 +63,16 @@ class GameLevelWater {
     const sprite_data_npc = {
         name: 'npc',
         src: sprite_src_npc,
-        SCALE_FACTOR: 16,  // Adjust this based on your scaling needs
+        SCALE_FACTOR: 16,
         STEP_FACTOR: 400,
         ANIMATION_RATE: 50,
-        pixels: {height: 256, width: 384},
-        INIT_POSITION: { x: (width / 2), y: (height / 2)},
-        orientation: {rows: 8, columns: 12 },
-        down: {row: 0, start: 9, columns: 3 },  // This is the idle animation
-        left: {row: 1, start: 9, columns: 3 },  
-        right: {row: 2, start: 9, columns: 3 }, 
-        up: {row: 3, start: 9, columns: 3 },    
+        pixels: { height: 256, width: 384 },
+        INIT_POSITION: { x: width / 2, y: height / 2 },
+        orientation: { rows: 8, columns: 12 },
+        down: { row: 0, start: 9, columns: 3 },
+        left: { row: 1, start: 9, columns: 3 },
+        right: { row: 2, start: 9, columns: 3 },
+        up: { row: 3, start: 9, columns: 3 },
     };
 
     this.objects = [
