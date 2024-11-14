@@ -5,7 +5,6 @@ description: A blog describing the popcorn and ideation hacks
 permalink: /ideas/
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,7 +57,7 @@ permalink: /ideas/
         </tbody>
     </table>
 
-<h1>Ideation Hacks</h1>
+<h1>Updated Ideation Hacks</h1>
     <blockquote>
         <p>Possible ideas for the RPG game</p>
     </blockquote>
@@ -73,20 +72,20 @@ permalink: /ideas/
         </thead>
         <tbody>
             <tr>
-                <td>Monster</td>
-                <td>Introduce various monsters with different abilities and strengths to challenge the player.</td>
+                <td>NPC</td>
+                <td>As the NPC has already been added, it would be possible to add additional features to the NPC. For example, the NPC currently only says one thing, but one thing that could be implemented is a dialouge system in which the NPC says something different every time.</td>
             </tr>
             <tr>
-                <td>Quests</td>
-                <td>Add quests that the player can complete for rewards and progression.</td>
+                <td>Pause Screen with quests.</td>
+                <td>Add quests that the player can complete for rewards and progression. This can be viewed in the pause screen, which could hypothetically be implemented through an on-keydown command.</td>
             </tr>
             <tr>
                 <td>Items</td>
-                <td>Include items that the player can collect, use, or trade.</td>
+                <td>Include items that the player can collect, use, or trade. There could be random objects scattered throughout the page, and the character could try to collect them, with something being in its way.</td>
             </tr>
             <tr>
-                <td>Multiplayer</td>
-                <td>Implement a multiplayer mode where players can interact and compete with each other.</td>
+                <td>2 Player System</td>
+                <td>Implement a system where multiple players can play together at the same time.</td>
             </tr>
         </tbody>
     </table>
@@ -94,14 +93,14 @@ permalink: /ideas/
     <pre><code>
 // Define a JSON object
 const person = {
-    "name": "John",
-    "age": 25,
+    "name": "Yusuf",
+    "age": 15,
     "isStudent": true
 };
 
 // Access values from the JSON object
-console.log("Name:", person.name);       // Output: Name: John
-console.log("Age:", person.age);         // Output: Age: 25
+console.log("Name:", person.name);       // Output: Name: Yusuf
+console.log("Age:", person.age);         // Output: Age: 15
 console.log("Is a student:", person.isStudent);  // Output: Is a student: true
 
 // Update a value in the JSON object
