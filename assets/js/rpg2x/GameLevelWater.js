@@ -48,7 +48,7 @@ class GameLevelWater {
     const TURTLE_SCALE_FACTOR = 10;
     const sprite_src_turtle = path + "/images/rpg/harry.png";
     const sprite_data_turtle = {
-      name: 'turtle',
+      name: 'harry',
       src: sprite_src_turtle,
       SCALE_FACTOR: TURTLE_SCALE_FACTOR,
       STEP_FACTOR: 1000,
@@ -64,7 +64,7 @@ class GameLevelWater {
     };
 
     const sprite_data_harry_black = {
-      name: 'turtle',
+      name: 'harry',
       src: sprite_src_turtle,
       SCALE_FACTOR: TURTLE_SCALE_FACTOR,
       STEP_FACTOR: 1000,
