@@ -8,8 +8,6 @@ permalink: /CSSE2blog/
 
 **Project Overview**: Full-stack Minecraft-style Nether dimension game demonstrating advanced computer science principles, object-oriented programming, and software engineering methodologies.
 
-<img width="467" alt="Screenshot 2025-06-09 at 11 19 34 AM" src="https://github.com/user-attachments/assets/f068a766-b91b-4f3d-9800-9332ee72af57" />
-
 ---
 
 ## Software Engineering & Development Lifecycle Implementation
